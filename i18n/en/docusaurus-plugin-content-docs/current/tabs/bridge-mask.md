@@ -28,11 +28,11 @@ In v0.1.1, Isolate merged into Bridge. Behavior is identical, and the `_Isolatio
 ## Procedure
 
 1. Pick **Random strands** / **Manual pick** mode at top
-2. Select hair object → **Load** → **Preview** ON
+2. Select hair object → **Load** — preview starts right there
 3. (Random strands) Adjust strand **ratio / thickness / size filter** and hit **Random Seed** until you like it
 4. Hover over strands in scene view to preview, `Ctrl` + click to add/remove
 5. Use panel buttons to refine
-6. **Bake** — saves grayscale mask PNG (doesn't change materials)
+6. **Bake** — saves grayscale mask PNG (doesn't change materials). If you need to combine this with other tab results into one layer, use **Final Bake** at the top → [Layer Stack and Final Bake](/concepts/layer-stack)
 
 If mesh has multiple materials, pick the active slot from thumbnails at top.
 → [Material Slot Picker](/getting-started/first-mask#머티리얼-슬롯-피커)
@@ -97,11 +97,13 @@ Each **Random Seed** button press gives a different combo. If you passed a good 
 
 ## Auto-assign after bake
 
-With **Auto-assign after bake** on, the moment you save, it plugs directly into the NiloToon stacking layer slot. You can also pick the target property.
+This tab makes a mask PNG, and **wiring to materials is an optional assisted feature.**
 
-This skips steps 3–4 of [First mask](/getting-started/first-mask).
+**Auto-assign after bake** is **off by default**. Turn it on and the saved mask plugs straight into the slot you pick below (usually NiloToon stacking layer). Results show in the status bar how many were assigned and how many skipped; undo with one `Ctrl+Z`.
 
-## send to the Paint tab
+Turn it off and only the mask saves; materials stay as they were — wire them yourself following [First mask](/getting-started/first-mask) steps 3–4.
+
+## Send to the Paint tab
 
 The **send to the Paint tab** button passes the current selection mask to the [Paint tab](/tabs/paint) so you can hand-paint more. Works in both modes.
 

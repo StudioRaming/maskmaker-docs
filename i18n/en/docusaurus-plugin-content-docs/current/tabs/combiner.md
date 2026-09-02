@@ -6,9 +6,9 @@ sidebar_position: 5
 
 # Combiner
 
-**By the end of this page** you'll know how to reduce multiple masks into one, scan an entire avatar to create packs, and auto-optimize down to rewriting material slots and channels.
+**By the end of this page** you'll know how to reduce multiple masks into one, scan an entire avatar to create packs, and how Pack + Reassign is an optional assisted feature that rewires materials — undoable in one undo.
 
-**Creates:** Channel-packed texture, **plus modified materials pointing to it**
+**Creates:** Channel-packed texture, plus optionally rewritten materials pointing to it
 
 <!-- SCREENSHOT: Combiner tab — auto-optimize scan result and group cards -->
 
@@ -26,7 +26,7 @@ On manual save, **save location label** previews where it goes, and **confirm ov
 
 ## Auto-optimize
 
-Scan the avatar's entire mask set, group 4 per pack, save pack textures, **and directly rewrite each material's slot and channel.**
+Scan the avatar's entire mask set, group 4 per pack, save pack textures. **Pack + Reassign** is an optional step that rewrites material slots/channels — always shown as an Execution Plan first, and undoable.
 
 ### 1. Scan
 
@@ -73,13 +73,15 @@ Four-per-group is auto-suggested. Check thumbnails and channel badges.
 
 ### 4. Execution Plan
 
-Before **Pack + Reassign**, review the **Execution Plan** card for generated pack files and overwrite badges.
+Before **Pack + Reassign**, review the **Execution Plan** card. It shows the pack files you'll generate and which ones would overwrite — **nothing runs without reviewing the plan first**.
 
 ### 5. Pack + Reassign
 
-Save pack texture and auto-change each material's **texture slot · channel (R/G/B/A) · enable toggle · shader keywords**. **Undoable**.
+Save pack texture and auto-change each material's **texture slot · channel (R/G/B/A) · enable toggle · shader keywords**. This touches materials but is **completely undoable** — one `Ctrl+Z` restores everything.
 
 Results stay on screen with ping button; **Rescan** to start over.
+
+If you want the packed texture without auto-reassignment, use manual **Channel Packing** instead.
 
 :::note[Original mask files aren't deleted]
 Review results, then clean them up yourself. The tool doesn't delete because if you need to undo later, there's no recovery without originals.

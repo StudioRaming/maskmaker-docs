@@ -11,7 +11,7 @@ slug: /
 
 Masks are an input required by almost every shader feature — where to add gloss, which areas to tint a different color, where to thin out outlines. But to make them, you typically need to exit Unity, unfold UVs in an external paint tool, re-import, fix import settings, test in material slots, and repeat from the beginning if something is wrong.
 
-Mask Maker removes that back-and-forth. You build while watching in the scene view, bake right there, and auto-assign to shader slots.
+Mask Maker removes that back-and-forth. You build while watching in the scene view, bake right there. Plugging masks into shader slots is an assisted feature — but that's optional, the core of this tool is making masks.
 
 Open it via menu **StudioRaming → Mask Maker**.
 
@@ -32,8 +32,12 @@ Open it via menu **StudioRaming → Mask Maker**.
 
 ## How it differs from other masking tools
 
-**Shader slot assignment is part of the product.**
-Mask baking doesn't end the job. The Combiner's auto-optimize scans the avatar's masks, groups them 4 to a RGBA texture, then **directly rewrites each material's texture slot and channel index.** The Bridge Mask auto-assign plugs into the NiloToon stacking layer slot the moment you save.
+**Tab results stack and blend on one mesh.**
+Unlike baking each tab separately and combining later, **Load** starts preview right there, and switching tabs leaves earlier results in the scene overlayed. **Final Bake** at the top saves that composite as one mask exactly as you see it.
+→ [Layer Stack and Final Bake](/concepts/layer-stack)
+
+**Plugging into shaders is optional.**
+Making masks is this tool's core; wiring to shader slots is an assisted feature. The Bridge Mask's **Auto-assign after bake** is off by default, and Combiner's **Pack + Reassign** always shows you the plan before running — both undo with one `Ctrl+Z`.
 → [Combiner](/tabs/combiner)
 
 **The scene view is your workspace.**
@@ -68,5 +72,6 @@ The shader connection table covers lilToon · Poiyomi 9.x · MingToon · NiloToo
 
 - What is a mask? → [What is a mask texture](/concepts/what-is-a-mask)
 - Install and make your first mask → [Installation](/getting-started/installation) · [First mask](/getting-started/first-mask)
+- Combine multiple tab results into one? → [Layer Stack and Final Bake](/concepts/layer-stack)
 - Plug an already-made mask into a shader → [Shader connections](/shaders/liltoon)
 - Mask not working? → [Troubleshooting](/troubleshooting)

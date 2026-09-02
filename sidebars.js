@@ -26,6 +26,7 @@ const sidebars = {
         'concepts/what-is-a-mask',
         'concepts/channels-and-packing',
         'concepts/srgb-and-import-settings',
+        'concepts/layer-stack',
       ],
     },
     {

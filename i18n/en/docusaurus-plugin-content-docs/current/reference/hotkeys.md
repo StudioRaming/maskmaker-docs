@@ -18,10 +18,14 @@ Works the same in [Bridge Mask](/tabs/bridge-mask) · [Slot Split](/tabs/slot-sp
 | `Ctrl` + drag | Toggle strands like paint brush as you pass |
 | `Ctrl+Shift` + drag | Box select to **add** |
 | `Ctrl+Shift+Alt` + drag | Box select to **remove** |
-| Plain click | Select Scene object as usual (standard Unity behavior preserved) |
+| Plain click | **While Preview is on, the scene view won't pick other objects.** Turn Preview off to select normally |
 | `Ctrl+Z` / `Ctrl+Y` | Undo / Redo |
 
 Front/back faces and mirrored strands toggle together automatically; status bar shows how many toggled together.
+
+:::note[Scene click lock during preview]
+While Preview is on, a plain left-click in the scene view won't switch to another object — this keeps your work target from changing on accident. `Alt` + drag camera rotation and `Ctrl` click/drag behavior stay the same.
+:::
 
 ## Paint tab
 
@@ -72,7 +76,7 @@ You can also manipulate directly with corner handles.
 | Gradient | Start/end handles = range · center knob = move all |
 
 :::note[Cannot touch handles if Preview is off]
-When preview is off, handles display dimmed and cannot be edited.
+When Preview is off, handles display dimmed and cannot be edited.
 :::
 
 ## Doesn't conflict with Unity defaults

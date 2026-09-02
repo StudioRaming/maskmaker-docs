@@ -10,13 +10,15 @@ sidebar_position: 2
 
 ## Complete workflow
 
-**Select object → Load → Choose material slot → Preview → Adjust in scene view → Bake → Assign to shader**
+**Select object → Load (preview auto-starts) → Choose material slot → Adjust in scene view → Bake or Final Bake → Assign to shader**
 
-<!-- SCREENSHOT: Target list top + Load / Preview buttons -->
+<!-- SCREENSHOT: Target row pinned below tab bar + Load / Refresh / Preview buttons -->
 
 ## 1. Select object and Load
 
-Select the object you'll work on (usually hair or body) from the Hierarchy and click **Load** in the window. You can select multiple objects at once.
+The **Target row** (Target · **Load** · **Refresh** · **Preview**) is pinned right below the tab bar, outside the scroll area so it's always in the same place. **Refresh** re-reads only the currently loaded mesh, independent of Hierarchy selection.
+
+Select the object you'll work on (usually hair or body) from the Hierarchy and click **Load** in the window. You can select multiple objects at once. **Load starts preview right there** — you don't need to click **Preview** separately.
 
 After Load, if Hierarchy selection changes, a hint **"Selection changed — reload"** appears in the scene view. If Preview isn't active, it auto-reloads.
 
@@ -36,13 +38,17 @@ If the mesh has multiple material slots, below the target list appear **base map
 The picker only appears if slots ≥ 2. With one slot, it's auto-selected.
 :::
 
-## 3. Preview
+## 3. Preview and Layer row
 
-Click **Preview** and results appear in real-time on the mesh in the scene view.
+Results appear in real-time on the mesh in the scene view. Right below the Target row, a **Layer row** shows this tab's result as one chip.
 
+- **When you switch tabs, earlier tab results stay overlayed on the scene.** Each tab's result sits in a layer stack (one per renderer · material slot), and what you see is that composite.
+- **Preview** / **Stop** now **show / hide** that tab's layer. The layer stays, so turning it back on brings it back unchanged.
 - Preview **doesn't touch the original material.** It applies a copy, and **Stop** restores it instantly.
 - Closing the window also restores it. Recompile and Play mode transitions also restore it.
 - When Preview is off, scene view handles (sphere, gradient endpoints) appear dimmed and can't be edited.
+
+→ [Layer Stack and Final Bake](/concepts/layer-stack)
 
 ## 4. Adjust in scene view
 
@@ -59,10 +65,16 @@ Depending on the tab, you drag handles, click strands, or paint with a brush. Cl
 
 Full list → [Hotkeys](/reference/hotkeys)
 
-## 5. Bake
+## 5. Bake or Final Bake
 
-Click **Bake** to save to the original texture folder.
+| Button | Bakes | Filename |
+|---|---|---|
+| **Bake** in the tab | **Only that tab's layer** | Per-tab rules (e.g., manual pick is `_Isolation`) |
+| **Final Bake** below the layer row | **All checked layers composited** | `<mesh>_<material>_Final.png` (and `_FinalColor.png` if color layers are present) |
 
+**Final Bake saves exactly what you see in the scene view** — preview and Final Bake use the same composite formula.
+
+- Save location is previewed in the label above the button.
 - If a same-named file exists, you're asked **Overwrite / New Name / Cancel**. No accidental overwrites.
 - Saved files appear in the **Recent Bakes** list at the tab bottom; ping or open folder directly.
 
@@ -80,7 +92,7 @@ Baking and assignment are separate. Four steps finish it.
 Slot names and inspector paths by shader → [lilToon](/shaders/liltoon) · [Poiyomi](/shaders/poiyomi) · [MingToon](/shaders/mingtoon) · [NiloToon](/shaders/nilotoon)
 
 :::tip[Skip steps 3–4]
-In the Bridge Mask tab, if you enable **Auto-assign after bake**, it plugs directly into the NiloToon stacking layer slot as you save. Combiner's **Pack + Reassign** also rewrites texture, channel, enable toggle, and keywords directly.
+In the Bridge Mask tab, if you enable **Auto-assign after bake**, it plugs directly into the NiloToon stacking layer slot as you save. Combiner's **Pack + Reassign** also rewrites texture, channel, enable toggle, and keywords directly. Both are optional and undo with one `Ctrl+Z`.
 :::
 
 ## Not sure which tab to start with?
@@ -94,3 +106,4 @@ In the Bridge Mask tab, if you enable **Auto-assign after bake**, it plugs direc
 | Specific area with different shader | [Slot Split](/tabs/slot-split) |
 | Too many textures | [Combiner](/tabs/combiner) |
 | Any other arbitrary shape | [Paint](/tabs/paint) |
+| Combine multiple tab results into one? | [Layer Stack and Final Bake](/concepts/layer-stack) |

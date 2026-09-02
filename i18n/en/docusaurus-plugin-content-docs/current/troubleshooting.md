@@ -49,6 +49,23 @@ Press **Stop** or close the window — auto-restores. Recompile and play mode to
 
 Preview works by swapping in a duplicate of the material temporarily, so the original never changes.
 
+If the editor crashes before preview cleanup finishes, the mesh might show white (preview material stuck):
+
+1. Open the Mask Maker window again — it **auto-restores**.
+2. To restore without opening, run **StudioRaming → Mask Maker → Recover Preview Materials**.
+
+## Switched tabs but previous tab preview stays
+
+Normal. Each tab's result sits in a **layer stack** on one mesh. To hide a specific tab's result without losing it, toggle its **checkbox** in the Layer row or click **Stop** on that tab — the layer stays, so turning it back on brings it back unchanged.
+
+→ [Layer Stack and Final Bake](/concepts/layer-stack)
+
+## Other objects won't select during preview
+
+This is intentional. While Preview is on, a plain left-click in the scene won't switch to another object. To select a different object, **Stop** preview or pick from Hierarchy. `Alt` + drag camera rotation still works.
+
+→ [Hotkeys](/reference/hotkeys)
+
 ## Can't grab strands in Scene view
 
 | Symptom | Check |
