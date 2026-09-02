@@ -115,6 +115,6 @@ On next **Load**, ask whether to restore — **Restore / Discard / Cancel**.
 | Source | Button |
 |---|---|
 | [MatCap Gloss](/tabs/matcap-gloss) | **Refine in Paint** next to bake result |
-| [Bridge Mask](/tabs/bridge-mask) | **send to the Paint tab** (Random/Manual modes both) |
+| [Bridge + Region Mask](/tabs/bridge-mask) | **send to the Paint tab** (Random/Manual modes both) |
 
 Workflow: calculations handle masks well, hands handle exceptions.

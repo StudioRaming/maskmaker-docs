@@ -17,7 +17,7 @@ Each mask slot has a vector like `(1,0,0,0)`, and the shader dot-products that v
 
 | Property | Inspector path | Purpose | Made in |
 |---|---|---|---|
-| `_BaseMapStackingLayer1MaskTex` | `Base Map ▸ Stacking Layer 1..10 ▸ Mask Tex` | Specify where to overlay a different color (bridge tint, etc.) on top of Base — separate per layer (1~10) with channel selection. **Most used mask** | [Bridge Mask](/tabs/bridge-mask) |
+| `_BaseMapStackingLayer1MaskTex` | `Base Map ▸ Stacking Layer 1..10 ▸ Mask Tex` | Specify where to overlay a different color (bridge tint, etc.) on top of Base — separate per layer (1~10) with channel selection. **Most used mask** | [Bridge + Region Mask](/tabs/bridge-mask) |
 
 Layers 2~10 just change the number in property name (`_BaseMapStackingLayer2MaskTex` …).
 
@@ -37,7 +37,7 @@ Layers 2~10 just change the number in property name (`_BaseMapStackingLayer2Mask
 
 ## Skip 3~4 steps with auto-assign
 
-Turn on **Auto-assign after bake** in [Bridge Mask](/tabs/bridge-mask) tab, and masks go straight into stacking layer slots on save. You can also pick the target property.
+Turn on **Auto-assign after bake** in [Bridge + Region Mask](/tabs/bridge-mask) tab, and masks go straight into stacking layer slots on save. You can also pick the target property.
 
 Hair-tinting a few strands becomes **bake → done**.
 
@@ -60,4 +60,4 @@ Not seeing effect? → [Troubleshooting](/troubleshooting)
 ## Related docs
 
 - [lilToon](/shaders/liltoon) · [Poiyomi](/shaders/poiyomi) · [MingToon](/shaders/mingtoon)
-- [Bridge Mask](/tabs/bridge-mask)
+- [Bridge + Region Mask](/tabs/bridge-mask)

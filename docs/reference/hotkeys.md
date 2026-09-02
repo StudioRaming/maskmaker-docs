@@ -10,7 +10,7 @@ sidebar_position: 1
 
 ## 클릭 선택 탭 공통
 
-[브릿지 마스크](/tabs/bridge-mask) · [슬롯 분리](/tabs/slot-split)에서 동일하게 동작합니다.
+[브릿지+영역마스크](/tabs/bridge-mask) · [슬롯 분리](/tabs/slot-split)에서 동일하게 동작합니다.
 
 | 조작 | 결과 |
 |---|---|

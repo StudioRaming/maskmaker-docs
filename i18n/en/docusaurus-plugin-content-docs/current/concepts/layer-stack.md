@@ -30,7 +30,7 @@ Each layer gets one row (chip).
 |---|---|
 | MatCap Gloss | [MatCap Gloss](/tabs/matcap-gloss) — Gloss mode |
 | Cavity/AO | [MatCap Gloss](/tabs/matcap-gloss) — AO (Cavity) mode |
-| Bridge | [Bridge Mask](/tabs/bridge-mask) — both Random strands and Manual pick |
+| Bridge | [Bridge + Region Mask](/tabs/bridge-mask) — both Random strands and Manual pick |
 | Paint Mask | [Paint](/tabs/paint) — Mask mode |
 | Gradient | [Gradient](/tabs/gradient) |
 | Paint Color | [Paint](/tabs/paint) — Color mode |

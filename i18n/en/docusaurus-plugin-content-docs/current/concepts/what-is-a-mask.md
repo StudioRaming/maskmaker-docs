@@ -51,7 +51,7 @@ Usually **512–1024px** is enough. Masks only care about shape boundaries, not 
 |---|---|---|
 | [MatCap Gloss](/tabs/matcap-gloss) | Grayscale mask of matcap highlight (Gloss mode) or mesh concavity (AO/Cavity mode) | Gloss / Specular / Rim mask, metal region |
 | [Gradient](/tabs/gradient) | World-direction gradient color texture | Height-based color tint (ombre dye) |
-| [Bridge Mask](/tabs/bridge-mask) | **Random strands** mode: grayscale mask of randomly selected strands / **Manual pick** mode: only clicked strands white | Bridge (highlight) dye for 2nd/3rd layer, stacking layer mask for specific regions |
+| [Bridge + Region Mask](/tabs/bridge-mask) | **Random strands** mode: grayscale mask of randomly selected strands / **Manual pick** mode: only clicked strands white | Bridge (highlight) dye for 2nd/3rd layer, stacking layer mask for specific regions |
 | [Slot Split](/tabs/slot-split) | Not a mask but **the mesh itself** separated into different slots | Separate regions needing a completely different shader |
 | [Paint](/tabs/paint) | Mask painted by hand with a brush | Any arbitrary shape not auto-generated |
 | [Combiner](/tabs/combiner) | Multiple masks packed into R/G/B/A of one texture | Reduce file count, combine/split channels |

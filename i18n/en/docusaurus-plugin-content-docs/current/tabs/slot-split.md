@@ -10,6 +10,8 @@ sidebar_position: 4
 
 **Creates:** A **mesh asset**, not a mask. Use this when different parts need completely different shaders.
 
+The **Split** / **Merge** toggle at the top switches between two directions. **Split** exports strands to another slot, and **Merge** combines multiple slots back into one submesh.
+
 <!-- SCREENSHOT: Slot Split tab — mesh cards and slot list, scene view legend -->
 
 ## When masks won't work
@@ -85,7 +87,57 @@ With **Duplicate materials for new slots** on, each new slot gets its own materi
 | GUID | Kept when updating owned output |
 | Undo/Redo | Supported |
 
-## Scene view operation
+## Merge Mode {#합치기-모드}
+
+**The reverse of Split.** Combine multiple slots back into one submesh — when you realize you didn't need to split, or to reduce draw calls.
+
+<!-- SCREENSHOT: Merge mode - slot cards with checkboxes and "Keep Material" selection -->
+
+### Procedure
+
+1. At the top, pick **Merge**
+2. Select object → **Load**
+3. Pick **2 or more** slots to merge — slot card checkboxes (base map thumbnails visible) or `Ctrl` + click in scene view
+4. Choose **Keep Material**. The merged submesh will use this material; the rest **leave only the renderer** (material assets are not deleted). Default is the first-picked slot
+5. **Merge** — the confirm dialog shows a summary (`Slots N→M, Triangle count`)
+
+The selection count displays as `{picked} / {total} slots selected (need 2 or more)`.
+
+### Warnings don't block execution
+
+Warnings appear in two cases but **don't prevent running** — there are intentional use cases.
+
+| Warning | Meaning |
+|---|---|
+| Base maps differ | After merge, **only the kept material's texture** is used |
+| Selected slots' UV areas overlap | On one texture they'll **share the same region** |
+
+### What gets saved and how to undo
+
+| Item | Behavior |
+|---|---|
+| New mesh | Saved as `*_merged.asset` next to the original (scene-only meshes prompt for save location) |
+| Original asset | **Unchanged** |
+| Renderer | Swapped to new mesh; merged slots removed from material array |
+| Other renderers using same mesh | Rebind together — never a partial update |
+| `Ctrl+Z` | **Mesh and material array revert together** |
+
+If you abort or fail mid-apply, the whole thing **rolls back** — no partial state.
+
+:::caution[Locks if Split mode has unapplied changes]
+If you've moved strands or added/deleted slots in Split mode without **Apply**, you can't use Merge. Apply them first, or use **Reset Moves** / **Reset Structure** to clean up.
+:::
+
+### Scene view operation (Merge mode)
+
+| Operation | Result |
+|---|---|
+| `Ctrl` + click | Select / deselect that slot |
+| `Ctrl+Z` / `Ctrl+Y` | Undo / Redo |
+
+The **Keep Material** slot is picked from the panel, not the scene. Selected slot cards get a **keep** badge.
+
+## Scene view operation (Split mode)
 
 | Operation | Result |
 |---|---|

@@ -26,7 +26,7 @@ Each tab's adjustment items are **remembered editor-globally**. Same values even
 |---|---|
 | MatCap Gloss | Strength · contrast · roundness · dilate pixels · Gloss/AO submode · Cavity radius/samples/strength/contrast/invert |
 | Gradient | Axis · center · softness · fill direction · end capping · preview display mode |
-| Bridge Mask | Ratio · gradient/edge fade · Backface Mode · Auto-assign after bake · target property |
+| Bridge + Region Mask | Ratio · gradient/edge fade · Backface Mode · Auto-assign after bake · target property |
 | Slot Split | Duplicate materials for new slots |
 | Combiner | lilToon alpha bake · confirm overwrite before save |
 | Paint | Brush radius · strength · falloff · Normal Limit · mirror axis · canvas size · Mask/Color mode |
@@ -42,6 +42,8 @@ Each tab's adjustment items are **remembered editor-globally**. Same values even
 |---|---|
 | MatCap Gloss | Global direction · sphere size · full settings like strength/contrast |
 | Gradient | Colors · axis · range · **reference bone name** |
+
+The Preset row appears as one line above the card — **[Preset ▾]** (current preset name, or `-` if none) **[Save]** **[Delete]** **[?]**. Clicking the rightmost **?** opens this page.
 
 Applying presets to different meshes or avatars reproduces the same settings. Gradient presets find the [Reference Bone](/tabs/gradient#기준-본) **by name** — reverts to world coordinates if no bone with that name exists.
 

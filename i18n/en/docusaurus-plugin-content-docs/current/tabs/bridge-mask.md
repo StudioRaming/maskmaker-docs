@@ -1,16 +1,16 @@
 ---
 id: bridge-mask
-title: Bridge Mask
+title: Bridge + Region Mask
 sidebar_position: 3
 ---
 
-# Bridge Mask
+# Bridge + Region Mask
 
 **By the end of this page** you'll know how to randomly select hair strands or click them manually to make a mask, and how auto-assign works to plug into a shader slot the moment you save.
 
 **Creates:** Grayscale mask PNG — for NiloToon stacking layer / isolation mask
 
-<!-- SCREENSHOT: Bridge Mask tab — Random strands / Manual pick toggle, ratio slider, recent seed chips -->
+<!-- SCREENSHOT: Bridge + Region Mask tab — Random strands / Manual pick toggle, ratio slider, recent seed chips -->
 
 ## Two modes
 

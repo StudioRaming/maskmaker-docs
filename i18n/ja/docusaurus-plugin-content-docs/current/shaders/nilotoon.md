@@ -17,7 +17,7 @@ sidebar_position: 4
 
 | プロパティ | インスペクター経路 | 用途 | 作成タブ |
 |---|---|---|---|
-| `_BaseMapStackingLayer1MaskTex` | `Base Map ▸ Stacking Layer 1..10 ▸ Mask Tex` | ベース カラーの上に別の色(ブリッジ染色など)を重ねる部位をレイヤー(1～10)ごとに指定 — チャンネル選択あり。**もっともよく使うマスク** | [ブリッジマスク](/tabs/bridge-mask) |
+| `_BaseMapStackingLayer1MaskTex` | `Base Map ▸ Stacking Layer 1..10 ▸ Mask Tex` | ベース カラーの上に別の色(ブリッジ染色など)を重ねる部位をレイヤー(1～10)ごとに指定 — チャンネル選択あり。**もっともよく使うマスク** | [ブリッジ+領域マスク](/tabs/bridge-mask) |
 
 レイヤー 2～10 はプロパティ名の数字を変えるだけです(`_BaseMapStackingLayer2MaskTex` …)。
 
@@ -37,7 +37,7 @@ sidebar_position: 4
 
 ## 自動割り当てで 3～4 ステップをスキップ
 
-[ブリッジマスク](/tabs/bridge-mask)タブで**ベイク後に自動割り当て**を有効にしておくと、保存と同時にスタッキング レイヤー スロットに直接挿します。対象プロパティも一緒に選択できます。
+[ブリッジ+領域マスク](/tabs/bridge-mask)タブで**ベイク後に自動割り当て**を有効にしておくと、保存と同時にスタッキング レイヤー スロットに直接挿します。対象プロパティも一緒に選択できます。
 
 髪の毛数本だけ別の色にする作業が**ベイク → 完了**になります。
 
@@ -60,4 +60,4 @@ sidebar_position: 4
 ## 関連ドキュメント
 
 - [lilToon](/shaders/liltoon) · [Poiyomi](/shaders/poiyomi) · [MingToon](/shaders/mingtoon)
-- [ブリッジマスク](/tabs/bridge-mask)
+- [ブリッジ+領域マスク](/tabs/bridge-mask)

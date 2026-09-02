@@ -75,4 +75,4 @@ Preview가 꺼져 있으면 씬 뷰 핸들은 흐리게 표시되고 편집할 �
 | Poiyomi | 데칼 · 두 번째 메인 텍스처 계열 |
 | NiloToon | `Base Map ▸ Stacking Layer ▸ Color Tex` |
 
-"어느 부위에 이 색을 입힐지"를 함께 지정하려면 [브릿지 마스크](/tabs/bridge-mask)나 [페인트](/tabs/paint)로 마스크를 따로 만들어 같은 레이어의 마스크 슬롯에 꽂습니다.
+"어느 부위에 이 색을 입힐지"를 함께 지정하려면 [브릿지+영역마스크](/tabs/bridge-mask)나 [페인트](/tabs/paint)로 마스크를 따로 만들어 같은 레이어의 마스크 슬롯에 꽂습니다.

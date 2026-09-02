@@ -55,7 +55,7 @@ sidebar_position: 910
 - **Without [reference bone](/tabs/gradient#기준-본), position shifts when pose changes.**
 - **If no bone with same name exists** when applying preset to different avatar, reverts to world coordinates.
 
-## Bridge Mask
+## Bridge + Region Mask
 
 - Selection **clears on Load**. Mode switch or preview toggle doesn't clear.
 - Tint color is **preview-only**. Saved mask is always grayscale.

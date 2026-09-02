@@ -25,7 +25,7 @@ Open it via menu **StudioRaming → Mask Maker**.
 |---|---|---|
 | [MatCap Gloss](/tabs/matcap-gloss) | Grayscale mask of matcap highlight (Gloss mode) or mesh concavity (AO/Cavity mode) | Gloss · Specular · Rim mask, metal region, AO |
 | [Gradient](/tabs/gradient) | World-direction gradient color texture | Height-based color tint (ombre dye) |
-| [Bridge Mask](/tabs/bridge-mask) | Randomly selected strands, or only clicked strands white | Bridge (highlight) dye layer, specific region isolation |
+| [Bridge + Region Mask](/tabs/bridge-mask) | Randomly selected strands, or only clicked strands white | Bridge (highlight) dye layer, specific region isolation |
 | [Slot Split](/tabs/slot-split) | Not a mask but **the mesh itself** separated into different material slots | Separate regions that need a completely different shader |
 | [Combiner](/tabs/combiner) | Pack multiple masks into one R/G/B/A texture · Unpack channels | Reduce texture count, auto-optimize |
 | [Paint](/tabs/paint) | Mask/color drawn directly on the mesh in the scene view with a brush | Any arbitrary shape not auto-generated |
@@ -37,7 +37,7 @@ Unlike baking each tab separately and combining later, **Load** starts preview r
 → [Layer Stack and Final Bake](/concepts/layer-stack)
 
 **Plugging into shaders is optional.**
-Making masks is this tool's core; wiring to shader slots is an assisted feature. The Bridge Mask's **Auto-assign after bake** is off by default, and Combiner's **Pack + Reassign** always shows you the plan before running — both undo with one `Ctrl+Z`.
+Making masks is this tool's core; wiring to shader slots is an assisted feature. The Bridge + Region Mask's **Auto-assign after bake** is off by default, and Combiner's **Pack + Reassign** always shows you the plan before running — both undo with one `Ctrl+Z`.
 → [Combiner](/tabs/combiner)
 
 **The scene view is your workspace.**
@@ -56,6 +56,8 @@ lilToon · Poiyomi · MingToon · NiloToon mask properties and inspector paths a
 
 **Guides are built into the tool.**
 The collapsible **Guide** panel at the top of each tab and the **?** button in the header contain the same content as this site. This site is just a searchable, link-friendly copy.
+
+You can also jump to this site from the tool. The **Docs** button in the header opens the current tab's online guide; the small **?** button next to each card title opens that feature's page and shows one-line help on hover; the version label **v0.1.1** in the header opens that version's patch notes. Links follow whichever language you pick in the tool.
 
 ## Supported environment
 

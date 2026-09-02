@@ -17,7 +17,7 @@ sidebar_position: 4
 
 | 프로퍼티 | 인스펙터 경로 | 용도 | 만드는 탭 |
 |---|---|---|---|
-| `_BaseMapStackingLayer1MaskTex` | `Base Map ▸ Stacking Layer 1..10 ▸ Mask Tex` | 베이스 컬러 위에 다른 색(브릿지 염색 등)을 덧씌울 부위를 레이어(1~10)별로 지정 — 채널 선택 있음. **가장 많이 쓰는 마스크** | [브릿지 마스크](/tabs/bridge-mask) |
+| `_BaseMapStackingLayer1MaskTex` | `Base Map ▸ Stacking Layer 1..10 ▸ Mask Tex` | 베이스 컬러 위에 다른 색(브릿지 염색 등)을 덧씌울 부위를 레이어(1~10)별로 지정 — 채널 선택 있음. **가장 많이 쓰는 마스크** | [브릿지+영역마스크](/tabs/bridge-mask) |
 
 레이어 2~10은 프로퍼티 이름의 숫자만 바꾸면 됩니다 (`_BaseMapStackingLayer2MaskTex` …).
 
@@ -37,7 +37,7 @@ sidebar_position: 4
 
 ## 자동 배정으로 3~4단계 건너뛰기
 
-[브릿지 마스크](/tabs/bridge-mask) 탭에서 **베이크 후 자동 배정**을 켜 두면, 저장과 동시에 스태킹 레이어 슬롯에 바로 꽂힙니다. 대상 프로퍼티도 함께 고를 수 있습니다.
+[브릿지+영역마스크](/tabs/bridge-mask) 탭에서 **베이크 후 자동 배정**을 켜 두면, 저장과 동시에 스태킹 레이어 슬롯에 바로 꽂힙니다. 대상 프로퍼티도 함께 고를 수 있습니다.
 
 머리카락 몇 가닥만 다른 색으로 만드는 작업이 **굽기 → 끝**이 됩니다.
 
@@ -60,4 +60,4 @@ sidebar_position: 4
 ## 관련 문서
 
 - [lilToon](/shaders/liltoon) · [Poiyomi](/shaders/poiyomi) · [MingToon](/shaders/mingtoon)
-- [브릿지 마스크](/tabs/bridge-mask)
+- [브릿지+영역마스크](/tabs/bridge-mask)

@@ -75,4 +75,4 @@ Gradient output is **color**, not a mask. It goes into a color layer slot, not a
 | Poiyomi | Decal · second main texture family |
 | NiloToon | `Base Map ▸ Stacking Layer ▸ Color Tex` |
 
-To specify "which region gets this color," make a separate mask with [Bridge Mask](/tabs/bridge-mask) or [Paint](/tabs/paint) and assign it to the mask slot of the same layer.
+To specify "which region gets this color," make a separate mask with [Bridge + Region Mask](/tabs/bridge-mask) or [Paint](/tabs/paint) and assign it to the mask slot of the same layer.

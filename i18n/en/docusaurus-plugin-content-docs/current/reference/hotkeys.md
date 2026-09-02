@@ -10,7 +10,7 @@ sidebar_position: 1
 
 ## Common to click-select tabs
 
-Works the same in [Bridge Mask](/tabs/bridge-mask) · [Slot Split](/tabs/slot-split).
+Works the same in [Bridge + Region Mask](/tabs/bridge-mask) · [Slot Split](/tabs/slot-split).
 
 | Action | Result |
 |---|---|

@@ -14,13 +14,26 @@ sidebar_position: 2
 
 <!-- SCREENSHOT: Target row pinned below tab bar + Load / Refresh / Preview buttons -->
 
+## 0. Window Layout
+
+The four rows above the scroll area stay in the same place on every tab.
+
+| Row | Content |
+|---|---|
+| Header | On the right: **Docs** (online guide for current tab) · **?** (built-in help) · Language · Version **v0.1.1** (click for patch notes) |
+| Action bar | **Load** · **Preview** · **Edit Mesh Only** · **Undo** · **Redo** · **Final Bake** · **Save** · **Save As** |
+| Tabs | Six tabs |
+| Target row · Layer row | Load status + layers stacked in this slot |
+
+A small **?** button next to each card title shows one-line help on hover and opens that feature's documentation page on click.
+
 ## 1. Select object and Load
 
 The **Target row** (Target · **Load** · **Refresh** · **Preview**) is pinned right below the tab bar, outside the scroll area so it's always in the same place. **Refresh** re-reads only the currently loaded mesh, independent of Hierarchy selection.
 
-Select the object you'll work on (usually hair or body) from the Hierarchy and click **Load** in the window. You can select multiple objects at once. **Load starts preview right there** — you don't need to click **Preview** separately.
+Select the object you'll work on (usually hair or body) from the Hierarchy and click **Load** in the window. You can select multiple objects at once. **Load starts preview right there** — you don't need to click **Preview** separately. With **Edit Mesh Only** on, only loaded targets stay visible in the scene, blocking nothing (non-destructive, turn it off to restore).
 
-After Load, if Hierarchy selection changes, a hint **"Selection changed — reload"** appears in the scene view. If Preview isn't active, it auto-reloads.
+After Load, if Hierarchy selection changes, a hint **"Selection changed — reload"** appears in the scene view. If Preview isn't active, it auto-reloads. **Refresh** re-reads only the currently loaded mesh regardless of Hierarchy selection.
 
 ## 2. Choose material slot {#머티리얼-슬롯-피커}
 
@@ -30,7 +43,7 @@ If the mesh has multiple material slots, below the target list appear **base map
 
 | Item | Behavior |
 |---|---|
-| Visible tabs | MatCap Gloss/AO · Gradient · Bridge Mask · Paint |
+| Visible tabs | MatCap Gloss/AO · Gradient · Bridge + Region Mask · Paint |
 | Output filename | `<mesh>_<material>` |
 | When slots exceed submeshes | Extra slots (lilToon/Poiyomi outline slots, etc.) are **mapped to the last submesh** |
 
@@ -52,7 +65,7 @@ Results appear in real-time on the mesh in the scene view. Right below the Targe
 
 ## 4. Adjust in scene view
 
-Depending on the tab, you drag handles, click strands, or paint with a brush. Click-select tabs (Bridge Mask, Slot Split) all follow the same rules.
+Depending on the tab, you drag handles, click strands, or paint with a brush. Click-select tabs (Bridge + Region Mask, Slot Split) all follow the same rules.
 
 | Operation | Result |
 |---|---|
@@ -92,7 +105,7 @@ Baking and assignment are separate. Four steps finish it.
 Slot names and inspector paths by shader → [lilToon](/shaders/liltoon) · [Poiyomi](/shaders/poiyomi) · [MingToon](/shaders/mingtoon) · [NiloToon](/shaders/nilotoon)
 
 :::tip[Skip steps 3–4]
-In the Bridge Mask tab, if you enable **Auto-assign after bake**, it plugs directly into the NiloToon stacking layer slot as you save. Combiner's **Pack + Reassign** also rewrites texture, channel, enable toggle, and keywords directly. Both are optional and undo with one `Ctrl+Z`.
+In the Bridge + Region Mask tab, if you enable **Auto-assign after bake**, it plugs directly into the NiloToon stacking layer slot as you save. Combiner's **Pack + Reassign** also rewrites texture, channel, enable toggle, and keywords directly. Both are optional and undo with one `Ctrl+Z`.
 :::
 
 ## Not sure which tab to start with?
@@ -102,8 +115,9 @@ In the Bridge Mask tab, if you enable **Auto-assign after bake**, it plugs direc
 | Add gloss to hair | [MatCap Gloss](/tabs/matcap-gloss) |
 | Darken only concave areas (AO) | [MatCap Gloss](/tabs/matcap-gloss) — AO/Cavity mode |
 | Root→tip color dye | [Gradient](/tabs/gradient) |
-| Only a few strands different color | [Bridge Mask](/tabs/bridge-mask) |
+| Only a few strands different color | [Bridge + Region Mask](/tabs/bridge-mask) |
 | Specific area with different shader | [Slot Split](/tabs/slot-split) |
+| Merge split slots back together | [Slot Split](/tabs/slot-split#합치기-모드) — Merge mode |
 | Too many textures | [Combiner](/tabs/combiner) |
 | Any other arbitrary shape | [Paint](/tabs/paint) |
 | Combine multiple tab results into one? | [Layer Stack and Final Bake](/concepts/layer-stack) |

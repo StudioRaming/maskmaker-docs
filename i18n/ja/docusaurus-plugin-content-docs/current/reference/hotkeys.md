@@ -10,7 +10,7 @@ sidebar_position: 1
 
 ## クリック選択タブ共通
 
-[ブリッジマスク](/tabs/bridge-mask)・[スロット分割](/tabs/slot-split)で同じように動作します。
+[ブリッジ+領域マスク](/tabs/bridge-mask)・[スロット分割](/tabs/slot-split)で同じように動作します。
 
 | 操作 | 結果 |
 |---|---|
