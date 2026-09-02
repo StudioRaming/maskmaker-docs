@@ -48,7 +48,7 @@ Not a list-based selection method. Hover over a strand and it previews in cyan/r
 Strand selection in the scene view, Slot Split apply, paint strokes — all revert with `Ctrl+Z` / `Ctrl+Y`.
 
 **Original is untouched.**
-Preview duplicates the material and shows the result; **Stop** instantly restores it. Closing the window also restores it. When saving, if a same-named file exists, you're asked: Overwrite / New Name / Cancel.
+Preview duplicates the material and shows the result; **Stop** instantly restores it. Closing the window also restores it. Even if the editor crashed before it could restore, reopening the window puts the originals back automatically, and the **Recover Preview** button at the top of the **?** help screen does the same. When saving, if a same-named file exists, you're asked: Overwrite / New Name / Cancel.
 
 **It knows four shader connection points.**
 lilToon · Poiyomi · MingToon · NiloToon mask properties and inspector paths are in a table inside the tool, and Combiner scans by shader profile. Shaders not in the list can be added via JSON profile.

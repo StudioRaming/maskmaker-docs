@@ -52,7 +52,7 @@ Preview works by swapping in a duplicate of the material temporarily, so the ori
 If the editor crashes before preview cleanup finishes, the mesh might show white (preview material stuck):
 
 1. Open the Mask Maker window again — it **auto-restores**.
-2. To restore without opening, run **StudioRaming → Mask Maker → Recover Preview Materials**.
+2. To restore without opening, use the **Recover Preview** button at the top of the **?** help screen. The **Self Test** button next to it runs the layer-compositing and preview-equals-bake checks and writes the result to the Console.
 
 ## Switched tabs but previous tab preview stays
 

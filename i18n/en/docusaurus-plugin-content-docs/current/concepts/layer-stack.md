@@ -83,4 +83,4 @@ While preview is on, **a plain left-click in the scene view won't select another
 If the editor force-closes before preview is cleaned up, the mesh may show preview material left behind (white).
 
 - Open the window again — it **auto-restores**.
-- To restore without opening, run menu **StudioRaming → Mask Maker → Recover Preview Materials**.
+- To restore without opening, use the **Recover Preview** button at the top of the **?** help screen.
