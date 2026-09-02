@@ -1,0 +1,38 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docsSidebar.category.시작하기": {
+    "message": "はじめに",
+    "description": "The label for category '시작하기' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.개념": {
+    "message": "コンセプト",
+    "description": "The label for category '개념' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.탭": {
+    "message": "タブ",
+    "description": "The label for category '탭' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.셰이더 연결": {
+    "message": "シェーダー接続",
+    "description": "The label for category '셰이더 연결' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.레퍼런스": {
+    "message": "リファレンス",
+    "description": "The label for category '레퍼런스' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.패치노트": {
+    "message": "パッチノート",
+    "description": "The label for category '패치노트' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.패치노트.link.generated-index.title": {
+    "message": "パッチノート",
+    "description": "The generated-index page title for category '패치노트' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.패치노트.link.generated-index.description": {
+    "message": "バージョンごとの変更点です。最新版が上にあります。",
+    "description": "The generated-index page description for category '패치노트' in sidebar 'docsSidebar'"
+  }
+}
