@@ -62,7 +62,7 @@ For the schema and examples, see â†’ [Combiner: shader profile](/tabs/combiner#ì
 
 The **preset row** appears on the MatCap Gloss, Gradient, and Bridge tabs. In the row's dropdown, pick a preset to **save** over it or **delete** it. If you pick `-` and save, a preset with an automatic name is created.
 
-- Bridge keeps a separate list for **random strands** and for **manual selection**.
+- Bridge keeps a separate list for **random strands** and for **Manual pick**.
 - A preset name alone does not identify a preset. The same name in a different mode is a different preset.
 
 ## Overwrite check

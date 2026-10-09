@@ -40,10 +40,11 @@ Choose one of **Mask only · Applied result · Original**.
 - **Mask only** and **Applied result** start Scene editing.
 - **Original** ends Scene editing. Mask work is kept while you are in Original view.
 - When you explicitly open a mask from **Applied result**, a related effect that was off is turned on and the applied result is shown. Looking at or searching the list alone does not change any effect.
+- The preview of a mask with nothing painted yet is black (black is 0), with one line: "Nothing painted yet."
 
 ## Edit several masks
 
-You can move between the masks on one material and paint on each. If you paint a shadow mask, edit an outline mask and come back, each mask keeps its drawing and layers. Packed masks that use the R/G/B/A channels keep separate work for each channel.
+You can move between the masks on one material and paint on each. If you paint a shadow mask, edit an outline mask and come back, each mask keeps its drawing and layers. Packed masks that use the R/G/B/A channels keep separate work for each channel. If you change the channel in the Inspector, your work moves to the new channel with it. → [Channels and packing](/concepts/channels-and-packing#channel-change)
 
 ## Output and plug into a shader
 

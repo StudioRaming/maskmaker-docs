@@ -17,7 +17,6 @@ sidebar_position: 910
 | 実行タイミング | Editor のみ。ランタイム API はありません |
 | プラットフォーム | エディターが動く環境（Windows で開発・検証） |
 
-<!-- CONFIRM: The support range comes from the 2.0 manual. There is no runtime verification for 2019.4, and 6000.x has only a compile gate (DRAFT_NOTES F1, F2). The 0.1.1 sentence "not supported for HDRP" is not in the 2.0 manual, so it was left out (DRAFT_NOTES F3). -->
 
 ## 再生中
 

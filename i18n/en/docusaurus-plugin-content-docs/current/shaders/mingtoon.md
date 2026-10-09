@@ -44,7 +44,7 @@ Make the grayscale mask for the AO channel (G) with [Paint](/tabs/paint) or [Ima
 
 ## Opening Mask Maker from the MingToon Inspector
 
-The open button on a mask slot in the MingToon Inspector opens Mask Maker. That route opens the mini session in the Scene view. The **Mask Maker** menu opens the full window.
+The open button on a mask slot in the MingToon Inspector opens Mask Maker. This link needs the latest MingToon. That route opens the mini session in the Scene view. The **Mask Maker** menu opens the full window.
 
 Mask Maker uses its own shader profile, so it works without MingPainter. It shows only the real masks, effect toggles, and effect colors that the installed shader provides. If some settings of a profile cannot be read, the selected effect shows a problem notice and a **Show reason** button.
 

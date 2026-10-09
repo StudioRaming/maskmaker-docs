@@ -16,7 +16,7 @@ sidebar_position: 5
 
 1. Pick the hair (or target) model and click **Use current selection**.
 2. In the right panel, pick a mask or open an empty slot, and choose **MatCap Gloss** as the method.
-3. Set the gloss shape in the **Gloss shape**, **Virtual sphere**, and **Mask conversion** cards. Advanced items are folded away.
+3. Set the gloss shape in the **Gloss Shape**, **Virtual Sphere**, and **Mask Convert** cards. Advanced items are folded away.
 4. Check the result with **Applied result**.
 5. Save from **Save and apply → Mask Output**.
 

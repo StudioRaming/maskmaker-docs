@@ -25,8 +25,8 @@ sidebar_position: 3
 |---|---|---|---|
 | `_AlphaMask` | `Surface ▸ Alpha Mask` | 투명도를 부위별로 조절 | [칠하기](/tabs/paint) |
 | `_MaskMap` | `PBR ▸ Packed Mask (R Metal / G AO / B Reserved / A Smooth)` | 금속성, AO, 매끄러움을 채널별로 나눠 담은 팩 텍스처 | [컴바이너](/tabs/combiner) |
-| `_ToonSpecularMask` | `Specular ▸ Toon Specular Mask` | 툰 스페큘러(하이라이트)가 나타나는 부위 | [MatCap 광택](/tabs/matcap-gloss) |
-| `_FresnelRimMask` | `Rim ▸ Fresnel Rim Mask` | 가장자리 림 라이트가 나타나는 부위 | [MatCap 광택](/tabs/matcap-gloss) |
+| `_ToonSpecularMask` | `Specular ▸ Toon Specular Mask` | 툰 스페큘러(하이라이트)가 나타나는 부위 | [맷캡 광택](/tabs/matcap-gloss) |
+| `_FresnelRimMask` | `Rim ▸ Fresnel Rim Mask` | 가장자리 림 라이트가 나타나는 부위 | [맷캡 광택](/tabs/matcap-gloss) |
 | `_GlitterMask` | `Glitter ▸ Glitter Mask` | 반짝이 입자 효과가 나타나는 부위 | [칠하기](/tabs/paint) |
 
 <!-- SCREENSHOT: MingToon 인스펙터의 마스크 슬롯과 Mask Maker 열기 버튼 -->
@@ -44,7 +44,7 @@ AO(G 채널)에 넣을 흑백 마스크는 [칠하기](/tabs/paint)나 [이미�
 
 ## MingToon 인스펙터에서 바로 열기
 
-MingToon 인스펙터의 마스크 슬롯에 있는 열기 버튼에서 Mask Maker를 엽니다. 이 경로는 씬 뷰 안의 미니 세션을 열고, 메뉴 **Mask Maker**는 전체 창을 엽니다.
+MingToon 인스펙터의 마스크 슬롯에 있는 열기 버튼에서 Mask Maker를 엽니다. 이 연동에는 MingToon 최신 버전이 필요합니다. 이 경로는 씬 뷰 안의 미니 세션을 열고, 메뉴 **Mask Maker**는 전체 창을 엽니다.
 
 Mask Maker는 자체 셰이더 프로파일을 쓰므로 MingPainter가 없어도 동작합니다. 설치한 셰이더가 제공하는 실제 마스크, 효과 토글, 효과 색상만 보여 줍니다. 프로파일의 일부 설정을 읽지 못하면 선택한 효과에 문제 안내와 **원인 확인** 버튼이 나타납니다.
 

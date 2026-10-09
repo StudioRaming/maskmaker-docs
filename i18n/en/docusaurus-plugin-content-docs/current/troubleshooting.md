@@ -26,7 +26,7 @@ Flipping only one of the two is enough. Turn off the shader's Invert option befo
 
 ## The model looks white after loading
 
-This is the preview shown when there are no layers or when **Mask only** is on. The original material is unchanged. Turn off **Edit** to see the original look. Switching to **Original view** shows the same thing.
+This is the preview shown when there are no layers or when **Mask only** is on. The original material is unchanged. Turn off **Edit** to see the original look. Switching to **Original** shows the same thing.
 
 ## The mask edge looks like stairs
 

@@ -21,7 +21,7 @@ Mask Maker가 lilToon 머티리얼에서 출력 대상으로 보여 주는 슬�
 |---|---|---|---|
 | `_AlphaMask` | `Rendering ▸ Alpha Mask` | 투명도를 부위별로 조절 (Rendering Mode가 Cutout/Transparent일 때만 동작) | [칠하기](/tabs/paint) |
 | `_ShadowStrengthMask` | `Shadow ▸ Strength Mask` | 그림자가 어두워지는 정도를 부위별로 줄이거나 없앰 | [칠하기](/tabs/paint) |
-| `_SmoothnessTex` | `Reflection ▸ Smoothness Map` | 부위별 매끄러움(광택) | [MatCap 광택](/tabs/matcap-gloss) |
+| `_SmoothnessTex` | `Reflection ▸ Smoothness Map` | 부위별 매끄러움(광택) | [맷캡 광택](/tabs/matcap-gloss) |
 | `_MetallicGlossMap` | `Reflection ▸ Metallic Map` | 부위별 금속성 | [칠하기](/tabs/paint) |
 | `_MainColorAdjustMask` | `Main Color ▸ Color Adjust ▸ Mask` | 메인 컬러 색조정을 적용할 세기 | [칠하기](/tabs/paint) |
 | `_OutlineWidthMask` | `Outline ▸ Width Mask` | 아웃라인 두께 (흰색 = 원래 두께, 검정 = 아웃라인 없음) | [칠하기](/tabs/paint) |

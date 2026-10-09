@@ -60,7 +60,7 @@ sidebar_position: 4
 
 ## 다른 방법과 함께 쓰기
 
-브릿지 결과를 기준으로 [그라데이션](/tabs/gradient)이나 [MatCap 광택](/tabs/matcap-gloss)을 **범위 제한**으로 더하면, 고른 가닥 안에만 효과가 남습니다.
+브릿지 결과를 기준으로 [그라데이션](/tabs/gradient)이나 [맷캡 광택](/tabs/matcap-gloss)을 **범위 제한**으로 더하면, 고른 가닥 안에만 효과가 남습니다.
 
 → [레이어와 마스크 출력](/concepts/layer-stack)
 

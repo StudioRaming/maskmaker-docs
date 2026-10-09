@@ -10,11 +10,10 @@ sidebar_position: 1
 
 ## Steps
 
-1. Import the `.unitypackage` into your project (`Assets` menu → `Import Package` → `Custom Package…`, or drag the file into the Project window).
+1. Import `MaskMaker_v2.0.0.unitypackage` into your project (`Assets` menu → `Import Package` → `Custom Package…`, or drag the file into the Project window).
 2. Check the import list and press **Import**. Only one folder is installed: `Assets/StudioRaming/MaskMaker`.
 3. After compilation finishes, open the window from **StudioRaming → Mask Maker**.
 
-<!-- CONFIRM: The package file name MaskMaker_v2.0.0.unitypackage depends on decision D4, which is still open. -->
 
 <!-- SCREENSHOT: Unity menu bar, StudioRaming → Mask Maker -->
 
@@ -43,13 +42,12 @@ Mask Maker's Editor scripts and internal resources reference each other. Importi
 
 Mask Maker is an **Editor-only tool**. Only the textures and mesh assets it creates stay in the project. The tool itself is not included in builds. Once you finish, you can delete the folder, and the outputs you already made keep working.
 
-<!-- CONFIRM: The support table follows the 2.0 manual. The runtime verification range must be confirmed before publishing (DRAFT_NOTES F1, F2). -->
 
 ## Change the language
 
 Pick 한국어 / English / 日本語 from the dropdown at the top right of the window. The choice is saved in the editor and kept the next time you open it. It is shared with the language setting of other StudioRaming tools.
 
-## Update from 1.x
+## Update from 1.x {#update-from-1x}
 
 
 
@@ -57,13 +55,12 @@ Pick 한국어 / English / 日本語 from the dropdown at the top right of the w
 2. Import the new `.unitypackage` over the existing `Assets/StudioRaming/MaskMaker` folder, without changes.
 3. After compilation finishes, open the window and check that your existing work is visible.
 
-Keep the files and settings from 1.x as they are. 2.0 is a free update for 1.x buyers.
+**Buyers of 1.x update to 2.0 for free.** Masks you saved in 1.x keep working, and your files and settings from 1.x stay as they are.
 
 Importing over the existing folder replaces each file in place. You do not need to delete the old files first.
 
 **Editable documents:** A 1.x layer document is converted to the new format the first time you save (overwrite) it in 2.0. The original is backed up to `Library/StudioRaming/MaskMaker/DocumentBackups/` before conversion. A converted document cannot be opened in 1.x.
 <!-- CONFIRM: Users who installed Mask Maker as source files (for example, a copy bundled with an older MingToon package) are still under investigation. Add guidance for that case only after it is settled. -->
-<!-- CONFIRM: The wording and location of the free update notice for 1.x buyers are not final (DRAFT_NOTES D7). -->
 
 ## Where data is stored
 

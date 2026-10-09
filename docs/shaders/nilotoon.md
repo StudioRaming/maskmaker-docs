@@ -26,9 +26,9 @@ sidebar_position: 4
 | 프로퍼티 | 인스펙터 경로 | 용도 | 만드는 방법 |
 |---|---|---|---|
 | `_EmissionMaskMap` | `Emission ▸ Mask Map` | 자체발광이 나오는 부위 | [칠하기](/tabs/paint) |
-| `_SmoothnessMap` | `Smoothness ▸ Map` | 부위별 매끄러움(광택) | [MatCap 광택](/tabs/matcap-gloss) |
-| `_SpecularMap` | `Specular ▸ Specular Map` | 스페큘러 하이라이트가 나타나는 부위 | [MatCap 광택](/tabs/matcap-gloss) |
-| `_MatCapAdditiveMaskMap` | `MatCap Additive ▸ Mask Map` | 맷캡 광택이 더해지는 부위 | [MatCap 광택](/tabs/matcap-gloss) |
+| `_SmoothnessMap` | `Smoothness ▸ Map` | 부위별 매끄러움(광택) | [맷캡 광택](/tabs/matcap-gloss) |
+| `_SpecularMap` | `Specular ▸ Specular Map` | 스페큘러 하이라이트가 나타나는 부위 | [맷캡 광택](/tabs/matcap-gloss) |
+| `_MatCapAdditiveMaskMap` | `MatCap Additive ▸ Mask Map` | 맷캡 광택이 더해지는 부위 | [맷캡 광택](/tabs/matcap-gloss) |
 | `_OcclusionMap` | `Occlusion ▸ Occlusion Map` | 오목한 부분을 어둡게 만드는 정도 (AO) | [칠하기](/tabs/paint) 또는 [이미지](/tabs/image)로 만든 흑백 마스크를 꽂습니다. AO 전용 방법은 없습니다 |
 | `_OutlineWidthTex` | `Outline ▸ Mask Map` | 아웃라인 두께를 부위별로 조절 | [칠하기](/tabs/paint) |
 | `_SkinMaskMap` | `Skin ▸ Mask Map` | 피부 전용 셰이딩을 적용할 부위 | [칠하기](/tabs/paint) |

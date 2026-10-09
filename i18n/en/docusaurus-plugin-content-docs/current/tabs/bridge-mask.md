@@ -14,7 +14,7 @@ sidebar_position: 4
 
 1. Pick the hair model and click **Use current selection**.
 2. In the right panel, pick a mask or open an empty slot, and choose **Bridge** as the method.
-3. Pick strands in **Random strands** mode, or click them in the Scene view in **Manual selection** mode.
+3. Pick strands in **Random strands** mode, or click them in the Scene view in **Manual pick** mode.
 4. Check the result with **Applied result**.
 5. Save from **Save and apply → Mask Output**.
 
@@ -24,10 +24,10 @@ If **Read/Write Enabled** is off on the mesh, Bridge asks whether it may turn it
 
 | Item | Meaning |
 |---|---|
-| **Strand percent (%)** | The share of all strands to pick at random. It sets the bridge density |
-| **Strand thickness (%)** | The share of faces used inside each strand. Lower it to keep only the center line |
+| **Strand Ratio (%)** | The share of all strands to pick at random. It sets the bridge density |
+| **Thickness (%)** | The share of faces used inside each strand. Lower it to keep only the center line |
 | **Size filter (%)** | Only the N% smallest strands by surface area count as candidates. Lower it to leave out large sheets |
-| **Front strands only** | Leaves out strands at the back of the mesh (by Z) |
+| **Front Only** | Leaves out strands at the back of the mesh (by Z) |
 | **Seed** / **Random seed** | The same seed always gives the same result. **Recent seeds** brings back an earlier seed |
 | **Expand** | Do not add / Nearby strands (5 mm) / Shared vertices. Adds the strands next to the picked ones |
 | **Scope** | Selected area or whole mesh |
@@ -74,6 +74,6 @@ Painting over a bridge result with [Paint](/tabs/paint) keeps only the painted p
 
 ## Saving
 
-The output file is grayscale and is imported with sRGB off. A file saved in **Manual selection** mode ends with `_Isolation`. A file saved in **Random strands** mode ends with `_BridgeMask`.
+The output file is grayscale and is imported with sRGB off. A file saved in **Manual pick** mode ends with `_Isolation`. A file saved in **Random strands** mode ends with `_BridgeMask`.
 
 → [sRGB and import settings](/concepts/srgb-and-import-settings)

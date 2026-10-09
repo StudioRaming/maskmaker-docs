@@ -16,11 +16,11 @@ sidebar_position: 2
 
 | 프로퍼티 | 인스펙터 경로 | 용도 | 만드는 방법 |
 |---|---|---|---|
-| `_RimMask` | `Rim Lighting ▸ Rim ▸ Mask & Bias` | 림 라이트가 나타나는 위치와 세기 | [MatCap 광택](/tabs/matcap-gloss) |
+| `_RimMask` | `Rim Lighting ▸ Rim ▸ Mask & Bias` | 림 라이트가 나타나는 위치와 세기 | [맷캡 광택](/tabs/matcap-gloss) |
 | `_EmissionMask` | `Emission ▸ Emission Mask` | 자체발광이 나오는 부위 | [칠하기](/tabs/paint) |
-| `_MatcapMask` | `Matcap ▸ Matcap 1 ▸ Mask` | 맷캡 효과가 적용될 부위. A채널로 매끄러움까지 함께 지정 | [MatCap 광택](/tabs/matcap-gloss) |
+| `_MatcapMask` | `Matcap ▸ Matcap 1 ▸ Mask` | 맷캡 효과가 적용될 부위. A채널로 매끄러움까지 함께 지정 | [맷캡 광택](/tabs/matcap-gloss) |
 | `_OutlineMask` | `Outlines ▸ Outline Size Mask` | 아웃라인 두께를 부위별로 조절 | [칠하기](/tabs/paint) |
-| `_Set_HighColorMask` | `Lighting ▸ Toon Shading ▸ Highlight Color Mask` | 밝은 영역에 별도 색을 입힐 부위 | [MatCap 광택](/tabs/matcap-gloss) |
+| `_Set_HighColorMask` | `Lighting ▸ Toon Shading ▸ Highlight Color Mask` | 밝은 영역에 별도 색을 입힐 부위 | [맷캡 광택](/tabs/matcap-gloss) |
 | `_CubeMapMask` | `Reflections ▸ Cubemap ▸ Mask` | 큐브맵 반사가 나타나는 부위 | [칠하기](/tabs/paint) |
 | `_SSSThicknessMap` | `Subsurface Scattering ▸ Color & Thickness` | 빛이 비쳐 보이는 두께 (RGB = 색, A = 두께) | [칠하기](/tabs/paint) |
 

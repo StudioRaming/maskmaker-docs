@@ -65,12 +65,21 @@ Combiner auto-optimize **automatically excludes** these. The exclusion list show
 
 ## Unpacking channels
 
-Combiner's **Channel Split** turns a packed texture back into per-channel grayscale PNGs. Use this when you only need to modify one channel of a pack texture you got from someone else.
+Combiner's **Split Channels** turns a packed texture back into per-channel grayscale PNGs. Use this when you only need to modify one channel of a pack texture you got from someone else.
 
 → [Combiner](/tabs/combiner)
 
+## When you change the channel in the Inspector {#channel-change}
+
+If you change the channel a material writes in the Inspector (for example Metallic from R to B), your painted work moves to the new channel, and the window follows to that channel's mask and says so. If the new channel already has its own painted work, Mask Maker asks:
+
+- **Move**: moves the work to the new channel. The new channel's own work is kept and can be restored.
+- **Just follow**: shows the new channel's own work. The old work stays on the old channel.
+
+If the new channel is empty, the work moves without asking. `Ctrl+Z` undoes it.
+
 ## Matching channels when assigning
 
-If you assigned a packed mask to a slot and the effect appeared in the wrong region, the slot's **channel selection doesn't match where your data actually is.** Use Combiner's **Pack + Reassign** to auto-fix this value too.
+If you assigned a packed mask to a slot and the effect appeared in the wrong region, the slot's **channel selection doesn't match where your data actually is.** Use Combiner's **Combine + Reassign** to auto-fix this value too.
 
 → [Troubleshooting](/troubleshooting)

@@ -5,7 +5,7 @@ sidebar_position: 5
 ---
 
 # Combiner
-**By the end of this page** you'll know how to reduce multiple masks into one, scan an entire avatar to create packs, and how Pack + Reassign is an optional assisted feature that rewires materials — undoable in one undo.
+**By the end of this page** you'll know how to reduce multiple masks into one, scan an entire avatar to create packs, and how Combine + Reassign is an optional assisted feature that rewires materials — undoable in one undo.
 
 **Creates:** Channel-packed texture, plus optionally rewritten materials pointing to it
 
@@ -16,8 +16,8 @@ sidebar_position: 5
 | Feature | Does |
 |---|---|
 | **Channel Packing** | Pack four masks into R/G/B/A channels of one texture |
-| **Mask Merge** | Add white regions of multiple masks into one |
-| **Channel Split** | Unpack a packed texture into per-channel grayscale PNGs |
+| **Merge Masks** | Add white regions of multiple masks into one |
+| **Split Channels** | Unpack a packed texture into per-channel grayscale PNGs |
 
 On manual save, **save location label** previews where it goes, and **confirm overwrite before saving** option makes it ask each time.
 
@@ -25,7 +25,7 @@ On manual save, **save location label** previews where it goes, and **confirm ov
 
 ## Auto-optimize
 
-Scan the avatar's entire mask set, group 4 per pack, save pack textures. **Pack + Reassign** is an optional step that rewrites material slots/channels — always shown as an Execution Plan first, and undoable.
+Scan the avatar's entire mask set, group 4 per pack, save pack textures. **Combine + Reassign** is an optional step that rewrites material slots/channels — always shown as an Execution Plan first, and undoable.
 
 ### 1. Scan
 
@@ -72,9 +72,9 @@ Four-per-group is auto-suggested. Check thumbnails and channel badges.
 
 ### 4. Execution Plan
 
-Before **Pack + Reassign**, review the **Execution Plan** card. It shows the pack files you'll generate and which ones would overwrite — **nothing runs without reviewing the plan first**.
+Before **Combine + Reassign**, review the **Execution Plan** card. It shows the pack files you'll generate and which ones would overwrite — **nothing runs without reviewing the plan first**.
 
-### 5. Pack + Reassign
+### 5. Combine + Reassign
 
 Save pack texture and auto-change each material's **texture slot · channel (R/G/B/A) · enable toggle · shader keywords**. This touches materials but is **completely undoable** — one `Ctrl+Z` restores everything.
 

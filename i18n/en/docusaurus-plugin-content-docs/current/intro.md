@@ -9,6 +9,10 @@ slug: /
 
 **An editor tool that makes avatar texture masks inside Unity.** From 2.0, the work screen is split into two modes: **Guided** and **Expert**.
 
+:::info[Buyers of 1.x update for free]
+Import the new `.unitypackage` over the existing `Assets/StudioRaming/MaskMaker` folder. Masks you saved in 1.x keep working. → [Update from 1.x](/getting-started/installation#update-from-1x)
+:::
+
 A mask is a grayscale image that many shader features read as input. It decides where a gloss goes, where another color is painted over, and where an outline gets thinner. Mask Maker lets you paint directly on the model in Scene view, or choose a method to make a mask, and then output it on the spot.
 
 Open it from the menu **StudioRaming → Mask Maker**.
@@ -50,7 +54,6 @@ If you add a method to a mask that already has content, the default is **Limit a
 | Language | 한국어 · English · 日本語 (switch at top right of the window) |
 | Install location | One folder: `Assets/StudioRaming/MaskMaker` |
 
-<!-- CONFIRM: The supported range follows the 2.0 manual. 2019.4 has no runtime verification, and 6000.x has only the compile gate (DRAFT_NOTES F1, F2). Confirm the wording before publishing. -->
 
 The shader connection table covers lilToon, Poiyomi, MingToon and NiloToon. You can still make masks for other shaders and plug them in by hand.
 

@@ -147,6 +147,6 @@ The **Keep Material** slot is picked from the panel, not the scene. Selected slo
 | Plain click | Select scene objects normally |
 | `Ctrl+Z` / `Ctrl+Y` | Undo / Redo |
 
-For inner and backface strands, turn on **Backface Mode**.
+For inner and backface strands, turn on **Two-Sided**.
 
 → [Hotkeys](/reference/hotkeys)
