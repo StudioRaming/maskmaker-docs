@@ -6,58 +6,50 @@ sidebar_position: 4
 
 # NiloToon
 
-**By the end of this page** you'll know which slot in NiloToon takes which mask, and which tab creates it.
+**After reading this page, you will know** which NiloToon slot takes which mask and which method makes it.
 
-:::note[NiloToon picks channels by channel vector]
-Each mask slot has a vector like `(1,0,0,0)`, and the shader dot-products that vector with the pixel to pick a channel. Any channel can be used freely. [Combiner](/tabs/combiner)'s **Pack + Reassign** directly uses these vectors.
+:::note[NiloToon picks the channel with a channel vector]
+Next to each mask slot is a vector such as `(1,0,0,0)`. The shader takes the dot product of that vector with the pixel to pick the channel. Any channel can be used. The expert tool [Combiner](/tabs/combiner) sets this vector when it packs.
 → [Channels and packing](/concepts/channels-and-packing)
 :::
 
-## Most used masks
+## Stacking layer masks
 
-| Property | Inspector path | Purpose | Made in |
+| Property | Inspector path | Use | How to make it |
 |---|---|---|---|
-| `_BaseMapStackingLayer1MaskTex` | `Base Map ▸ Stacking Layer 1..10 ▸ Mask Tex` | Specify where to overlay a different color (bridge tint, etc.) on top of Base — separate per layer (1~10) with channel selection. **Most used mask** | [Bridge + Region Mask](/tabs/bridge-mask) |
+| `_BaseMapStackingLayer1MaskTex` | `Base Map ▸ Stacking Layer 1..10 ▸ Mask Tex` | Sets, for each layer (1 to 10), where another color is laid over the base color. Has a channel picker | [Bridge](/tabs/bridge-mask) |
 
-Layers 2~10 just change the number in property name (`_BaseMapStackingLayer2MaskTex` …).
+For layers 2 to 10, change only the number in the property name (`_BaseMapStackingLayer2MaskTex` and so on).
 
 ## Other masks
 
-| Property | Inspector path | Purpose | Made in |
+| Property | Inspector path | Use | How to make it |
 |---|---|---|---|
-| `_EmissionMaskMap` | `Emission ▸ Mask Map` | Where self-emission appears | [Paint](/tabs/paint) |
-| `_SmoothnessMap` | `Smoothness ▸ Map` | Smoothness (gloss) per area | [MatCap Gloss](/tabs/matcap-gloss) |
-| `_SpecularMap` | `Specular ▸ Specular Map` | Where specular highlight appears | [MatCap Gloss](/tabs/matcap-gloss) |
-| `_MatCapAdditiveMaskMap` | `MatCap Additive ▸ Mask Map` | Where MatCap gloss is added — **mask baked in MatCap tab goes straight here** | [MatCap Gloss](/tabs/matcap-gloss) |
-| `_OcclusionMap` | `Occlusion ▸ Occlusion Map` | Darken recesses (AO) — **use mask baked in MatCap tab's AO (Cavity) mode** | [MatCap Gloss](/tabs/matcap-gloss) |
-| `_OutlineWidthTex` | `Outline ▸ Mask Map` | Adjust outline thickness per area | [Paint](/tabs/paint) |
-| `_SkinMaskMap` | `Skin ▸ Mask Map` | Where to apply skin-specific shading (skin tone correction) | [Paint](/tabs/paint) |
+| `_EmissionMaskMap` | `Emission ▸ Mask Map` | Where the emission glows | [Paint](/tabs/paint) |
+| `_SmoothnessMap` | `Smoothness ▸ Map` | Smoothness (gloss) by area | [MatCap Gloss](/tabs/matcap-gloss) |
+| `_SpecularMap` | `Specular ▸ Specular Map` | Where specular highlights appear | [MatCap Gloss](/tabs/matcap-gloss) |
+| `_MatCapAdditiveMaskMap` | `MatCap Additive ▸ Mask Map` | Where the matcap gloss is added | [MatCap Gloss](/tabs/matcap-gloss) |
+| `_OcclusionMap` | `Occlusion ▸ Occlusion Map` | How much the hollow areas are darkened (AO) | Plug in a grayscale mask made with [Paint](/tabs/paint) or [Image](/tabs/image). There is no AO-specific method |
+| `_OutlineWidthTex` | `Outline ▸ Mask Map` | Outline width by area | [Paint](/tabs/paint) |
+| `_SkinMaskMap` | `Skin ▸ Mask Map` | Where the skin-only shading applies | [Paint](/tabs/paint) |
 
-<!-- SCREENSHOT: Help panel NiloToon connection table -->
+<!-- SCREENSHOT: NiloToon connection table in the help panel -->
 
-## Skip 3~4 steps with auto-assign
+## Plugging in the mask
 
-Turn on **Auto-assign after bake** in [Bridge + Region Mask](/tabs/bridge-mask) tab, and masks go straight into stacking layer slots on save. You can also pick the target property.
+1. Output the mask with **Save and apply → Mask Output**.
+2. Select the texture, turn off **sRGB (Color Texture)** in the Inspector, and click **Apply**.
+3. Drag the texture onto the matching slot in the material Inspector.
+4. Set the **channel vector** of the slot to the channel that really holds the mask data. If you did not pack with the Combiner, that is usually R `(1,0,0,0)`.
+5. Stacking layers have a **separate toggle** that turns the layer on. Check that it is on.
 
-Hair-tinting a few strands becomes **bake → done**.
+:::tip[Bridge can plug the mask in for you]
+Turn on **Auto-assign after bake** in [Bridge](/tabs/bridge-mask) and the saved mask is connected to a slot on the material that can take it automatically. It works only with NiloToon, lilToon, and Poiyomi materials. It is off by default, and you can undo it. On NiloToon the target is an empty stacking layer.
+:::
 
-## Auto-optimize
+If the effect does not show, see [Troubleshooting](/troubleshooting).
 
-Combiner auto-optimize scans **35 mask slots** with NiloToon profile. With 10 stacking layers each having their own mask, packing saves the most.
-
-→ [Combiner](/tabs/combiner)
-
-## How to plug in
-
-1. **Bake** the mask.
-2. Select texture → Inspector **sRGB (Color Texture) OFF** → **Apply**.
-3. Drag into the slots in the table above from Material Inspector.
-4. Set the **channel vector** to the channel where mask data actually lives. Usually R `(1,0,0,0)` unless from Combiner.
-5. Stacking layers have a separate **layer enable toggle**. Make sure it's on.
-
-Not seeing effect? → [Troubleshooting](/troubleshooting)
-
-## Related docs
+## Related pages
 
 - [lilToon](/shaders/liltoon) · [Poiyomi](/shaders/poiyomi) · [MingToon](/shaders/mingtoon)
-- [Bridge + Region Mask](/tabs/bridge-mask)
+- [Bridge](/tabs/bridge-mask)

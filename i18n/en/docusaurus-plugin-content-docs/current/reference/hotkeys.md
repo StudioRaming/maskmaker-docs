@@ -6,79 +6,63 @@ sidebar_position: 1
 
 # Hotkeys
 
-**By the end of this page** you'll see all the keys used in the Scene view on one screen.
+**After reading this page, you will know** the keys Mask Maker uses, all on one page.
 
-## Common to click-select tabs
-
-Works the same in [Bridge + Region Mask](/tabs/bridge-mask) · [Slot Split](/tabs/slot-split).
+## Common
 
 | Action | Result |
 |---|---|
-| `Ctrl` + click | Add/remove strand |
-| `Ctrl` + drag | Toggle strands like paint brush as you pass |
-| `Ctrl+Shift` + drag | Box select to **add** |
-| `Ctrl+Shift+Alt` + drag | Box select to **remove** |
-| Plain click | **While Preview is on, the scene view won't pick other objects.** Turn Preview off to select normally |
-| `Ctrl+Z` / `Ctrl+Y` | Undo / Redo |
+| `Ctrl+Z` / `Ctrl+Y` | Undo / redo. One step is one apply, one selection change, or one stroke |
+| `Space` (hold and drag) | Moves the UV canvas |
+| `Esc` | Cancels the drag or stroke in progress |
 
-Front/back faces and mirrored strands toggle together automatically; status bar shows how many toggled together.
+## Paint in the Scene view
 
-:::note[Scene click lock during preview]
-While Preview is on, a plain left-click in the scene view won't switch to another object — this keeps your work target from changing on accident. `Alt` + drag camera rotation and `Ctrl` click/drag behavior stay the same.
-:::
+These keys work in the Scene view while a paint tool is on.
 
-## Paint tab
-
-In Scene view, **just left-click and drag** to paint. No `Ctrl` needed; `Alt` rotates camera as usual.
-
-### Brush
-
-| Key | Does |
+| Key | Action |
 |---|---|
-| `[` | Decrease radius |
-| `]` | Increase radius |
-| `<` or `,` | Decrease strength |
-| `>` or `.` | Increase strength |
-| `F` + drag | Radius modal adjust |
-| `Shift+F` + drag | Strength modal adjust |
+| `1` / `2` / `3` / `4` | Picks the paint tool: Draw / Erase / Smooth / Fill |
+| `X` | Changes the paint value (white 1 ↔ black 0) |
+| `S` (hold) | Eyedropper. Click in the Scene view to pick a color. Release the key to turn it off |
+| `[` / `]` | Brush size ×0.9 / ÷0.9 |
+| `,` / `.` | Brush strength -0.05 / +0.05 |
+| `F` | Radius adjustment. Hold it and move the mouse to change the size |
+| `Shift+F` | Strength adjustment |
 
-`<` `>` and `,` `.` **do the same thing**. Use whichever is comfortable for your keyboard layout. Values appear in the GUI slider immediately.
+## UV canvas
 
-### Tools
-
-| Key | Does |
+| Action | Result |
 |---|---|
-| `S` | Eyedropper — extract color from base texture |
-| `X` | Swap color/value |
-| `Ctrl` + click | Fill tool (or temp fill while on other tool) |
-| `Ctrl+Z` / `Ctrl+Y` | **Stroke-by-stroke** Undo / Redo |
+| `1` / `2` / `3` / `4` | Selection unit: Vertex / Edge / Face / Island. Ignored while the brush is on |
+| `A` | Select all (while the brush is off) |
+| `F` | Fits the canvas to the window |
+| `X` | While the brush is on, switches the brush value between 0 and 1 |
+| `Ctrl` + click or drag | Toggles the selection or removes from it |
 
-### Stencil
+## Bridge (picking strands in the Scene view)
 
-| Key | Does |
+| Action | Result |
 |---|---|
-| `T` + drag | Move |
-| `Shift+T` + drag | Scale |
-| `Ctrl+T` + drag | Rotate |
-| `Alt+T` | Fit to screen |
-| Scroll | Resize |
+| `Ctrl` + click | Adds or removes one strand |
+| `Ctrl` + drag | Toggles the strands you drag over, like a paint brush |
+| `Ctrl+Shift` + drag | Box-selects strands inside the rectangle and adds them |
+| `Ctrl+Shift+Alt` + drag | Box-selects strands inside the rectangle and removes them |
+| `Alt` + drag (without `Ctrl`) | Orbits the Scene view (Unity default) |
 
-You can also manipulate directly with corner handles.
-→ [Paint — Stencil texturing](/tabs/paint#스텐실)
+Hover over a strand to preview the result in color.
 
-## Handle-manipulation tabs
-
-[MatCap Gloss](/tabs/matcap-gloss) · [Gradient](/tabs/gradient) use Scene view handles dragged by mouse. No separate hotkeys.
-
-| Tab | Handle |
+| Highlight | Meaning |
 |---|---|
-| MatCap Gloss | Orange sphere = move center · edge knobs = radius · rotation ring = direction rotation |
-| Gradient | Start/end handles = range · center knob = move all |
+| **Cyan** (`#33E5FF`) | Strand not picked yet. `Ctrl` + click adds it |
+| **Red** (`#FF4033`) | Strand already picked. `Ctrl` + click removes it |
 
-:::note[Cannot touch handles if Preview is off]
-When Preview is off, handles display dimmed and cannot be edited.
-:::
+Front and back faces, and mirrored strands that share UVs, toggle together. The status line shows how many toggled with it.
 
-## Doesn't conflict with Unity defaults
+## Scene clicks during preview
 
-Mask Maker **does not hijack plain left-click** (except Paint tab). Pick objects and use gizmos normally in Scene view. Standard Unity actions like `Alt` rotate, `F` frame are preserved — only `F` in Paint tab becomes brush radius.
+While a preview is on, a plain left click in the Scene view does not pick another object. `Alt` orbit and `Ctrl` click keep their meaning.
+
+## Stencil
+
+In the stencil tab of the expert tools, hold `T` and drag to move the stencil. Hold `Ctrl` to rotate it, or `Shift` to scale it. Stencils are not one of the 2.0 mask methods.

@@ -16,7 +16,7 @@ import autoLinkTerms from './src/remark/auto-link-terms.mjs';
 // navbar item, so its i18n key carries the version (item.label.v0.1.2) and a
 // new one has to be written; the previous key is then reported as unknown and
 // can be deleted from the three navbar.json files.
-const MASKMAKER_VERSION = '0.1.1';
+const MASKMAKER_VERSION = '2.0.0';
 const LATEST_CHANGELOG = `/changelog/${MASKMAKER_VERSION}`;
 
 /** @type {import('@docusaurus/types').Config} */

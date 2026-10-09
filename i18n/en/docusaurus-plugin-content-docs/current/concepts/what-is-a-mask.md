@@ -6,58 +6,58 @@ sidebar_position: 1
 
 # What is a mask texture
 
-**By the end of this page** you'll understand how shaders read masks, why they're grayscale, and why you must turn off sRGB. Inside the tool, the **?** button in the header shows the same content.
+**After reading this page, you will know** how a shader reads a mask, why it is grayscale, and why sRGB must be turned off. Inside the tool, the same content is available from the **?** button in the header.
 
-## A picture storing numbers, not colors
+## A picture that stores numbers, not colors
 
-A mask texture is **a picture storing 'numbers', not colors**. The shader reads the brightness (0–1) at each pixel to decide **"how much should this effect apply here."**
+A mask texture is **a picture that stores numbers, not colors**. For each pixel, the shader reads the brightness (0 to 1) and decides **how much of the effect to apply there**.
 
 | Mask value | Meaning |
 |---|---|
-| Black (0) | Not applied — original stays |
+| Black (0) | Not applied. The original is kept |
 | Gray (0.5) | Half applied |
 | White (1) | Fully applied |
 
-<!-- SCREENSHOT: Three-cell strip of black/gray/white and comparison result side-by-side -->
+<!-- SCREENSHOT: Black, gray and white strip next to the result of each -->
 
-That's why masks don't need "pretty colors." They just need **which parts are how bright.**
+A mask therefore does not need pretty colors. It only needs to show **where it is bright and how bright**.
 
-## One texture holds four masks
+## Four masks in one texture
 
-A texture pixel holds **R · G · B · A four channels**, and a mask typically uses **just one channel**. A grayscale image has R=G=B, so reading any channel gives the same value.
+A texture has four channels, **R, G, B and A**. A mask usually uses only one of them. A grayscale image has R=G=B, so reading any channel gives the same value.
 
-This is where optimization comes in — **pack four masks into R, G, B, A channels of one texture, and you have four masks in one file.** That's what the [Combiner](/tabs/combiner) tab does.
+If you put four masks into R, G, B and A, one file holds **four masks**. The [Mask Combiner](/tabs/combiner) does this job.
 → [Channels and packing](/concepts/channels-and-packing)
 
-## What to verify when saving
+## What to check when saving
 
-:::danger[You must turn off sRGB (Color Texture)]
-Masks are numbers, not colors. With sRGB checked, Unity applies gamma correction and **the number value gets corrupted.** Gray baked at 0.5 won't read as 0.5 in the shader.
+:::danger[sRGB (Color Texture) must be turned off]
+A mask is numbers, not color. If the sRGB box is on, Unity applies gamma correction and **the numbers change**. A gray baked at 0.5 is not read as 0.5 by the shader.
 
-Select texture → Inspector → **Uncheck sRGB (Color Texture)** → **Apply**.
+Select the texture → in the Inspector, turn off **sRGB (Color Texture)** → **Apply**.
 :::
 
-Mask Maker already saves with correct settings at bake time — masks are linear, colors (gradient/paint color mode) are sRGB. Only when bringing in masks from outside do you need to check manually.
+When you run **Mask Output**, Mask Maker imports grayscale masks with sRGB turned off. You only need to check masks that you imported from outside.
 → [sRGB and import settings](/concepts/srgb-and-import-settings)
 
 ## Resolution
 
-Usually **512–1024px** is enough. Masks only care about shape boundaries, not detail. If edges look jagged, try increasing the dilate (outline expand) value before raising resolution.
+The resolution is set by **Texture Size** in the output settings. A mask only needs its boundary right, so if the edge looks stair-stepped, check the **Outline (px)** value before you raise the resolution.
 → [Troubleshooting](/troubleshooting)
 
-## Which tab makes which mask
+## Which method makes which mask
 
-| Tab | Creates | Common use |
+| Method | What it makes | Typical use |
 |---|---|---|
-| [MatCap Gloss](/tabs/matcap-gloss) | Grayscale mask of matcap highlight (Gloss mode) or mesh concavity (AO/Cavity mode) | Gloss / Specular / Rim mask, metal region |
-| [Gradient](/tabs/gradient) | World-direction gradient color texture | Height-based color tint (ombre dye) |
-| [Bridge + Region Mask](/tabs/bridge-mask) | **Random strands** mode: grayscale mask of randomly selected strands / **Manual pick** mode: only clicked strands white | Bridge (highlight) dye for 2nd/3rd layer, stacking layer mask for specific regions |
-| [Slot Split](/tabs/slot-split) | Not a mask but **the mesh itself** separated into different slots | Separate regions needing a completely different shader |
-| [Paint](/tabs/paint) | Mask painted by hand with a brush | Any arbitrary shape not auto-generated |
-| [Combiner](/tabs/combiner) | Multiple masks packed into R/G/B/A of one texture | Reduce file count, combine/split channels |
+| [Paint](/tabs/paint) | A grayscale mask painted with a brush | Shapes that cannot be generated automatically |
+| [Image](/tabs/image) | A chosen Texture2D | Reusing a picture made elsewhere |
+| [Gradient](/tabs/gradient) | A grayscale mask whose value changes with direction or height | Position-based effects |
+| [Bridge](/tabs/bridge-mask) | A grayscale mask of the selected hair strands | Effects on only part of the hair |
+| [MatCap Gloss](/tabs/matcap-gloss) | A grayscale mask baked from a MatCap highlight | Gloss and highlights |
+| [Mask Combiner](/tabs/combiner) (Expert tools) | Several masks combined into one R/G/B/A texture | Fewer files |
 
-## Where shaders read masks
+## Where a shader reads masks
 
-Each shader reads masks from different slots (properties). Even the same "gloss mask" — lilToon reads from `MatCap ▸ Mask`, NiloToon reads from `MatCap Additive ▸ Mask Map`.
+Each shader has different slots (properties) for masks. A "gloss mask" is read from `MatCap ▸ Mask` in lilToon, but from `MatCap Additive ▸ Mask Map` in NiloToon.
 
 → [lilToon](/shaders/liltoon) · [Poiyomi](/shaders/poiyomi) · [MingToon](/shaders/mingtoon) · [NiloToon](/shaders/nilotoon)

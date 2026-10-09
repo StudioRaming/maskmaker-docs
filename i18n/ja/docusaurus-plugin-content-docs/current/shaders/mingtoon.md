@@ -6,57 +6,59 @@ sidebar_position: 3
 
 # MingToon
 
-**このページを読むと** MingToon のどのスロットにどのマスクが入るのか、どのタブでそれを作成するのかがわかります。
+**このページを読むと** MingToon のどのスロットにどのマスクを入れるか、どの方法で作るかが分かります。
 
-:::note[MingToon はマスク スロットごとに詳細調整を提供します]
-ほとんどのマスク プロパティに**チャンネル選択 · 反転(Invert) · リマッピング · フェザー**が一緒にあります。効果が反対に出た場合、マスクを再度ベイクする前に**Invert トグル**を最初に確認してください。
+:::note[ほとんどの MingToon マスクのスロットには、チャンネル選択と有効トグルがあります]
+ほとんどのマスクのスロットに **チャンネル選択** と **`~ Enabled` トグル** が付いています。効果が出ない場合は、まずチャンネルとトグルが合っているか確認してください。
 :::
 
 ## よく使うマスク
 
-| プロパティ | インスペクター経路 | 用途 | 作成タブ |
+| プロパティ | インスペクターのパス | 用途 | 作り方 |
 |---|---|---|---|
-| `_RegionMask` | `Region ▸ Region Mask (RGBA = 4 Regions)` | R/G/B/A 4 チャンネル各々を異なる部位 1 つずつとして使用して 1 枚で 4 か所を個別制御 — コンバイナーのチャンネル パッキングと同じ方式で、もっともよく使うマスクの 1 つ | [コンバイナー](/tabs/combiner) |
-| `_BaseAdjustMask` | `Base Color ▸ Color Adjust ▸ Mask` | ベース カラー色調整が適用される強度を部位ごとに調整 — もっともよく使うマスクの 1 つ | [ペイント](/tabs/paint) |
+| `_RegionMask` | `Region ▸ Region Mask (RGBA = 4 Regions)` | R / G / B / A の各チャンネルがそれぞれ別の部位を担当し、1 枚で 4 か所を別々に制御します | [コンバイナー](/tabs/combiner) |
+| `_BaseAdjustMask` | `Base Color ▸ Color Adjust ▸ Mask` | ベースカラーの色調整を部位ごとにどれだけ掛けるか | [描く](/tabs/paint) |
 
-## その他のマスク
+## そのほかのマスク
 
-| プロパティ | インスペクター経路 | 用途 | 作成タブ |
+| プロパティ | インスペクターのパス | 用途 | 作り方 |
 |---|---|---|---|
-| `_AlphaMask` | `Surface ▸ Alpha Mask` | 透明度を部位ごとに調整 — チャンネル/反転/リマッピング/フェザーまで細かく調整可能 | [ペイント](/tabs/paint) |
-| `_MaskMap` | `PBR ▸ Packed Mask (R Metal / G AO / B Reserved / A Smooth)` | 金属性・AO・滑らかさをチャンネル別に既に分けて入れたパック テクスチャ — コンバイナーで作成したパックと形が同じです | [コンバイナー](/tabs/combiner) |
-| `_ToonSpecularMask` | `Specular ▸ Toon Specular Mask` | トゥーン スペキュラ(ハイライト)が表示される部位 | [MatCapグロス](/tabs/matcap-gloss) |
-| `_FresnelRimMask` | `Rim ▸ Fresnel Rim Mask` | 端のリムライトが表示される部位 | [MatCapグロス](/tabs/matcap-gloss) |
-| `_GlitterMask` | `Glitter ▸ Glitter Mask` | キラキラ パーティクル効果が表示される部位 | [ペイント](/tabs/paint) |
+| `_AlphaMask` | `Surface ▸ Alpha Mask` | 部位ごとの透明度 | [描く](/tabs/paint) |
+| `_MaskMap` | `PBR ▸ Packed Mask (R Metal / G AO / B Reserved / A Smooth)` | 金属感、AO、滑らかさを別々のチャンネルに入れたパック済みテクスチャ | [コンバイナー](/tabs/combiner) |
+| `_ToonSpecularMask` | `Specular ▸ Toon Specular Mask` | トゥーンスペキュラー（ハイライト）が出る部位 | [マットキャップ光沢](/tabs/matcap-gloss) |
+| `_FresnelRimMask` | `Rim ▸ Fresnel Rim Mask` | エッジのリムライトが出る部位 | [マットキャップ光沢](/tabs/matcap-gloss) |
+| `_GlitterMask` | `Glitter ▸ Glitter Mask` | キラキラの粒子効果が出る部位 | [描く](/tabs/paint) |
 
-<!-- SCREENSHOT: ヘルプパネルの MingToon 接続表 -->
+<!-- SCREENSHOT: MingToon インスペクターのマスクのスロットと Mask Maker を開くボタン -->
 
-## チャンネルの意味が固定されたスロット
+## チャンネルの意味が決まっているスロット
 
-2 つのスロットはチャンネルの意味がシェーダーで決まっています。[コンバイナー](/tabs/combiner)の**チャンネルパッキング**(マニュアル モード)で順序を直接指定して作成してください。
+この 2 つのスロットは、チャンネルの意味がシェーダーで決まっています。[コンバイナー](/tabs/combiner)の **チャンネルパッキング** で、チャンネルの順番を自分で指定して作ってください。
 
 | スロット | R | G | B | A |
 |---|---|---|---|---|
-| `PBR ▸ Packed Mask` | 金属 | AO | 予約済み | 滑らか |
+| `PBR ▸ Packed Mask` | 金属 | AO | 予約 | 滑らかさ |
 | `Region ▸ Region Mask` | 部位 1 | 部位 2 | 部位 3 | 部位 4 |
 
-AO チャンネルは [MatCap グロス タブの AO/キャビティ モード](/tabs/matcap-gloss)でベイクしたマスクがそのまま入ります。
+AO 用の G チャンネルに入れるグレースケールのマスクは、[描く](/tabs/paint)か[画像](/tabs/image)で作り、コンバイナーで G の入力としてまとめます。
 
-## MingToon Inspector から直接開く
+## MingToon インスペクターから Mask Maker を開く
 
-MingToon を一緒に使用している場合、マスク関連テクスチャ スロット隣に**`MM`**ボタンが付きます。押すとそのスロットのマスクをシーンビューで直接編集します。マテリアルを**1 つだけ選択した状態**で動作します。
+MingToon インスペクターのマスクのスロットにある開くボタンから Mask Maker を開けます。この経路では Scene ビューの中にミニセッションが開きます。メニューの **Mask Maker** では、ウィンドウ全体が開きます。
 
-## 挿入順序
+Mask Maker は独自のシェーダープロファイルを使うため、MingPainter がなくても動作します。インストールされたシェーダーが提供する実際のマスク、効果トグル、効果の色だけを表示します。プロファイルの一部の設定を読めない場合、選んだ効果に問題の案内と **原因を確認** ボタンが表示されます。
 
-1. マスクを**ベイク**します。
-2. テクスチャ選択 → Inspector で**sRGB (Color Texture) をオフ** → **Apply**。
-3. マテリアル Inspector の上の表のスロットにドラッグします。
-4. スロットの**チャンネル選択**を実際のデータが入っているチャンネルに合わせます。
-5. そのプロパティを有効にする上位の**`~ Enabled` トグル**が有効になっていることを確認します。
+## 差し込む手順
 
-効果が見えない場合 → [トラブルシューティング](/troubleshooting)
+1. **保存・適用 → マスク出力** でマスクを出力します。
+2. テクスチャを選び、Inspector で **sRGB (Color Texture)** をオフにして **Apply** を押します。
+3. マテリアルの Inspector で、上の表の対応するスロットにドラッグします。
+4. スロットの **チャンネル選択** を、実際にデータが入っているチャンネルに合わせます。
+5. そのプロパティの上にある **`~ Enabled` トグル** がオンになっているか確認します。
 
-## 関連ドキュメント
+効果が出ない場合は → [トラブルシューティング](/troubleshooting)
+
+## 関連ページ
 
 - [lilToon](/shaders/liltoon) · [Poiyomi](/shaders/poiyomi) · [NiloToon](/shaders/nilotoon)
 - [チャンネルとパッキング](/concepts/channels-and-packing)

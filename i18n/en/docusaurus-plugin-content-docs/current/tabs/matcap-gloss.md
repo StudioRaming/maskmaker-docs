@@ -1,87 +1,54 @@
 ---
 id: matcap-gloss
 title: MatCap Gloss
-sidebar_position: 1
+sidebar_position: 5
 ---
 
 # MatCap Gloss
 
-**By the end of this page** you'll know how to bake a matcap highlight as a grayscale UV mask, and how to bake an AO mask from only mesh concavity, independent of scene view angle.
+**After reading this page, you will know** how to bake matcap highlights into a grayscale mask.
 
-**Creates:** Grayscale mask texture (for gloss/effect mask input to shaders)
+**What it makes:** A grayscale mask with the baked matcap highlight (for a gloss or effect mask input on a shader)
 
-<!-- SCREENSHOT: MatCap Gloss tab full — Gloss/AO toggle, matcap slot, sliders -->
+<!-- SCREENSHOT: MatCap Gloss method with matcap selection and adjustment items -->
 
-## Procedure
+## Steps
 
-1. Select hair (or target) object in Hierarchy → **Load**
-2. **Preview** ON → rotate scene view camera to catch the gloss at the right angle
-3. Pick a MatCap texture and adjust **Roundness / Strength / Contrast**
-4. Use scene view handles to position
-5. **Bake** — bakes from current scene view angle and auto-saves to original texture folder
+1. Pick the hair (or target) model and click **Use current selection**.
+2. In the right panel, pick a mask or open an empty slot, and choose **MatCap Gloss** as the method.
+3. Set the gloss shape in the **Gloss shape**, **Virtual sphere**, and **Mask conversion** cards. Advanced items are folded away.
+4. Check the result with **Applied result**.
+5. Save from **Save and apply → Mask Output**.
 
-If the mesh has multiple materials, pick the working slot from thumbnails below the checkbox first.
-→ [Material Slot Picker](/getting-started/first-mask#머티리얼-슬롯-피커)
+You can **save** or **delete** a setting in the preset row.
 
-## Scene view handles
+## Gloss direction
 
-| Handle | Operation |
-|---|---|
-| Orange sphere | Move virtual sphere center |
-| Edge knob | Adjust radius |
-| Rotation ring | Rotate gloss direction (camera stays fixed) |
+When you bake, Mask Maker uses the camera view of **the Scene view that was active last**. Set the Scene view to the angle you want, then bake.
 
-<!-- SCREENSHOT: Scene view orange virtual sphere handle and rotation ring -->
+## Painting to refine
 
-:::note[Disabled when Preview is off]
-When Preview is off, handles appear dimmed and can't be edited. This prevents accidental value changes.
-:::
+Painting over a MatCap Gloss result with [Paint](/tabs/paint) keeps only the painted part as a correction. You can paint the gloss by hand over the computed result. Use this to erase the gloss from a single strand of bangs, or to fill a spot the calculation missed.
 
-## Gloss / AO (Cavity) submode
+## Combining with other methods
 
-Toggle between the two modes at the top of the tab.
+If you add MatCap Gloss to a mask that already has content, the default is **Limit area**. With [Bridge](/tabs/bridge-mask), the gloss can stay only inside the strands you picked.
 
-| Mode | Basis | Scene angle | Preview |
-|---|---|---|---|
-| **Gloss** | MatCap + mesh normal | **Affects** result — bakes from current viewpoint | Real-time |
-| **AO (Cavity)** | Mesh shape concavity alone | **Doesn't affect** result | **Preview Bake** button |
-
-AO mode gives the same result wherever you point the camera because it reads the shape itself. Instead of real-time preview, use the **Preview Bake** button to check results in advance.
-
-| AO mode adjustment | What it does |
-|---|---|
-| Radius | How wide a range counts as "concave" |
-| Sample count | Quality. Higher = slower but smoother |
-| Strength | How dark it gets |
-| Contrast | Difference between bright and dark areas |
-| Invert | White in convex areas instead of concave |
-
-<!-- SCREENSHOT: AO (Cavity) mode — Preview Bake result -->
-
-## Presets
-
-Save settings (global direction, sphere size, etc.) and reuse on other meshes. Useful for applying the same gloss to hair split into multiple objects.
-
-→ [Settings and presets](/reference/settings-and-presets)
-
-## Refine in Paint
-
-The **Refine in Paint** button next to the bake result sends that mask to the [Paint tab](/tabs/paint). You can hand-paint over the computed gloss — remove gloss from just one forelock strand, or fill in areas the computation missed.
+→ [Layers and mask output](/concepts/layer-stack)
 
 ## Saving
 
-- The filename includes **mesh structure**, so same structures overwrite each other.
-- If a same-named file exists, you're asked Overwrite / New Name / Cancel.
-- Confirm saved files in the **Recent Bakes** list at tab bottom; ping or open folder.
-- When Hierarchy selection changes, a **"Selection changed — reload"** line appears (auto-reload is off while previewing).
+The output file is grayscale and is imported with sRGB off.
 
-## Where to assign
+→ [sRGB and import settings](/concepts/srgb-and-import-settings)
+
+## Where to plug it in
 
 | Shader | Slot |
 |---|---|
 | lilToon | `MatCap ▸ Mask` · `Reflection ▸ Smoothness Map` |
 | Poiyomi | `Matcap ▸ Matcap 1 ▸ Mask` · `Rim Lighting ▸ Rim ▸ Mask & Bias` |
 | MingToon | `Specular ▸ Toon Specular Mask` · `Rim ▸ Fresnel Rim Mask` |
-| NiloToon | `MatCap Additive ▸ Mask Map` · `Occlusion ▸ Occlusion Map` (AO mode) |
+| NiloToon | `MatCap Additive ▸ Mask Map` |
 
-Full table → [Shader connections](/shaders/liltoon)
+For the full table, see → [Shader connections](/shaders/liltoon)

@@ -1,120 +1,73 @@
 ---
 id: paint
 title: Paint
-sidebar_position: 6
+sidebar_position: 1
 ---
 
 # Paint
 
-**By the end of this page** you'll know how to paint masks and color textures directly on mesh in the Scene view with a brush. All shapes that the other five tabs cannot compute are created here.
+**After reading this page, you will know** how to paint a mask directly on the model in the Scene view, and how pen pressure and UV selection work.
 
-**Creates:** Mask (grayscale) or Color (RGBA) texture
+**What it makes:** A grayscale mask. Painting over a generated result keeps only the painted part as a correction.
 
-<!-- SCREENSHOT: Paint tab — tool buttons, brush sliders, stencil card -->
+<!-- SCREENSHOT: Scene view with painting in progress and the floating tool panel -->
 
-## Procedure
+## Steps
 
-1. Select target object → **Load** → choose target Material slot per renderer from thumbnail and turn **Preview** ON
-2. Start with **New Texture** (select size) or **Load Existing** to continue painting — choose Mask / Color mode
-3. In Scene view, **just left-click and drag** to paint. No `Ctrl` needed; `Alt` rotates camera as usual
-4. Adjust tools, radius, strength, and falloff while painting
-5. **Save** or **Save As**
+1. Pick the model in the Hierarchy and click **Use current selection**.
+2. In the right panel, pick the material and the mask. If you pick an empty slot, choose a resolution to make a new mask.
+3. Click **Paint**, then paint in the Scene view.
+4. Check the result with **Applied result**.
+5. Save from **Save and apply → Mask Output**.
 
-## Tools
+You can paint without selecting an area. Painting covers the whole UV, so a "no selection" warning does not block it.
 
-| Tool | Does |
+## Paint options
+
+Turn on the **Occlude** option in the paint panel, and areas hidden from the camera are not painted. Turn it off, and painting goes through to the hidden faces (X-Ray).
+
+## Keys
+
+The keys for paint tools, brush size, strength, and the selection mode are listed on [Hotkeys](/reference/hotkeys). In the Scene view, `1` to `4` pick a paint tool. On the UV canvas, `1` to `4` pick the selection unit.
+
+The tool and apply buttons for UV view are in small floating panels at the top and sides. Drag sliders, and double-click number fields before you type. The key hints and `Space` / `Esc` behavior stay in place in a narrow window.
+
+## Pen pressure {#펜-필압}
+
+Pressure applies to two items separately.
+
+| Item | Range | Default |
+|---|---|---|
+| **Pressure size** | 0% to 100% | 0% |
+| **Pressure opacity** | 0% to 100% | 100% |
+
+- `0%` turns off the pressure effect for that item.
+- `100%` follows the pen pressure exactly.
+- You can turn on size only, opacity only, or both.
+- The mouse is treated as neutral pressure.
+
+Pen pressure is used when the value reaches Unity. The Windows tablet driver must send pressure.
+
+## Unsupported materials
+
+For an unsupported material, Mask Maker only offers PNG output. The tool does not put the texture into the material for you. Save the PNG, then put it into the texture slot of the target material yourself.
+
+## Stencils and decals
+
+Stencil texturing and decals are not among the 2.0 mask methods. Their existing data is kept.
+
+## Paint correction {#칠하기-보정}
+
+Painting over a generated result keeps only the painted part as a correction. The unpainted part follows changes you make to the settings of [Gradient](/tabs/gradient), [Bridge](/tabs/bridge-mask), or [MatCap Gloss](/tabs/matcap-gloss).
+
+Clicking **Paint** again returns you to the same correction work. The generator and the input image file are kept.
+
+→ [Layers and mask output](/concepts/layer-stack)
+
+## Saving
+
+| Item | Format |
 |---|---|
-| Draw | Paint with current color/value |
-| Erase | Paint with opposite value |
-| Smooth | Blend surrounding values to blur edges |
-| Fill | `Ctrl` + click the **entire UV island** to paint at once |
-
-## Brush Hotkeys
-
-| Key | Does |
-|---|---|
-| `[` `]` | Radius |
-| `<` `>` or `,` `.` | Strength (both do the same) |
-| `F` + drag | Radius modal adjust |
-| `Shift+F` + drag | Strength modal adjust |
-| `S` | Eyedropper — extract color from base texture |
-| `X` | Swap color/value |
-| `Ctrl` + click | Fill tool (or temp fill while on other tool) |
-| `Ctrl+Z` / `Ctrl+Y` | **Stroke-by-stroke** Undo / Redo |
-
-Values appear in the GUI slider **immediately** — adjust in Scene view then check the panel to see the values applied.
-
-## Paint Range Limits
-
-| Option | Does |
-|---|---|
-| **Normal Limit** | Skip faces at steep angles to camera. Prevents silhouette edges from getting dirty |
-| **Occlude** | Skip faces hidden from camera. **Turn off for X-Ray to paint through** both sides together |
-| **Mirror** | Left-right mirror paint. Choose X/Y/Z axis |
-
-<!-- SCREENSHOT: Mirror paint on; painting one side and seeing the opposite side paint together -->
-
-## Stencil texturing {#스텐실}
-
-Place an image on the stencil card to display it as a **screen-fixed overlay**. Paint over it to stamp.
-
-| Key | Does |
-|---|---|
-| `T` + drag | Move |
-| `Shift+T` + drag | Scale |
-| `Ctrl+T` + drag | Rotate |
-| `Alt+T` | Fit to screen |
-| Scroll | Resize |
-
-You can also manipulate directly with corner handles.
-
-<!-- SCREENSHOT: Stencil overlay floating on screen with corner handles visible in Scene view -->
-
-### Built-in stencils
-
-**8 anime hair highlight shapes** come standard and ready to use.
-
-| File | Shape |
-|---|---|
-| `angel_ring` | Angel ring (hair highlight) |
-| `crescent` | Crescent |
-| `double_ring` | Double ring |
-| `star4` | 4-point star |
-| `diamond` | Diamond |
-| `wave` | Wave |
-| `zigzag` | Zigzag |
-| `dashes` | Dashes |
-
-All original assets created directly by StudioRaming.
-→ [Third-party credits](/legal/third-party-credits)
-
-## Save
-
-| Mode | Format |
-|---|---|
-| Mask | **Linear** (sRGB off) |
-| Color | **sRGB** |
+| Mask output | Grayscale, sRGB off |
 
 → [sRGB and import settings](/concepts/srgb-and-import-settings)
-
-## Auto-save recovery
-
-When preview stops, recompile occurs, play mode toggles, or scene switches without saving, the canvas is **auto-saved temporarily**.
-
-On next **Load**, ask whether to restore — **Restore / Discard / Cancel**.
-
-| Item | Value |
-|---|---|
-| Save location | `<Project>/Library/MaskMakerAutoSave/` |
-| Deletion point | Temp file is deleted when actual save succeeds |
-
-→ [Settings and presets](/reference/settings-and-presets)
-
-## Handoff from other tabs
-
-| Source | Button |
-|---|---|
-| [MatCap Gloss](/tabs/matcap-gloss) | **Refine in Paint** next to bake result |
-| [Bridge + Region Mask](/tabs/bridge-mask) | **send to the Paint tab** (Random/Manual modes both) |
-
-Workflow: calculations handle masks well, hands handle exceptions.

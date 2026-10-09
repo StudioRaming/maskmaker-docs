@@ -1,86 +1,77 @@
 ---
 id: layer-stack
-title: Layer Stack and Final Bake
+title: Layers and mask output
 sidebar_position: 4
 ---
 
-# Layer Stack and Final Bake
+# Layers and mask output
 
-**By the end of this page** you'll understand how results from multiple tabs stack on one mesh, and how the **Final Bake** button saves them all as a single layer.
+**After reading this page, you will know** how mask methods stack and combine as layers, and how to output a mask.
 
-## Two fixed rows at the top
+## Three views
 
-Right below the tab bar is the **Target row** (Target · **Load** · **Refresh** · **Preview**), and directly below that is the **Layer row**. Both are outside the scroll area, so they always stay in the same place no matter which tab you're viewing.
-
-<!-- SCREENSHOT: Tab bar → Target row → Layer chip row in fixed top area -->
-
-## Load starts preview immediately
-
-From any tab, click **Load** and preview starts right there.
-
-And **when you switch tabs, the previous tab's preview doesn't disappear.** Each tab's result sits in a **layer stack** (one per renderer · material slot), and the scene view shows the composite of that stack. Lock down MatCap Gloss, pick strands in Bridge, and hand-paint in Paint — all three results appear together on the same mesh.
-
-**Preview** / **Stop** buttons now **show / hide** that tab's layer. The layer itself stays, so clicking **Preview** again brings it back unchanged.
-
-## The Layer row
-
-Each layer gets one row (chip).
-
-| Chip | From which tab |
+| View | What it does |
 |---|---|
-| MatCap Gloss | [MatCap Gloss](/tabs/matcap-gloss) — Gloss mode |
-| Cavity/AO | [MatCap Gloss](/tabs/matcap-gloss) — AO (Cavity) mode |
-| Bridge | [Bridge + Region Mask](/tabs/bridge-mask) — both Random strands and Manual pick |
-| Paint Mask | [Paint](/tabs/paint) — Mask mode |
-| Gradient | [Gradient](/tabs/gradient) |
-| Paint Color | [Paint](/tabs/paint) — Color mode |
+| **Mask only** | Shows only the mask image. Starts Scene editing |
+| **Applied result** | Connects the working mask to a preview that uses the original shader. Starts Scene editing |
+| **Original** | Shows the original look. Ends Scene editing. Mask work is kept |
 
-| Item | Does |
+Changing the view does not reset the drawing.
+
+In **Applied result**, changing a toggle or color on the effect card changes the real material setting, and you can undo it.
+
+## Combine methods {#방법-조합}
+
+If you add a method to a mask that already has content, the default is **Limit area**.
+
+| Option | What it does |
 |---|---|
-| Checkbox | Include this layer in scene preview and Final Bake |
-| Blend | How to composite with layers below — `Max` · `Add` · `Multiply` · `Subtract` · `Replace` |
-| Opacity | 0 ~ 100 |
+| **Limit area** | Uses the new method's result only inside the existing content. This is the default |
+| **Add white areas** | Combines the white areas of both methods |
+| **Use only this** | Shows only the result of the selected method |
 
-Default blends: mask-type layers use `Max`, Gradient uses `Multiply`, Paint Color uses `Replace`.
+Pressing a method button again returns to its existing settings. The same work is not added again.
 
-Composite order is **fixed by the table order above**, not by the order tabs are turned on — results are always the same regardless of which sequence you enable tabs.
+For example, you can keep a gradient or MatCap gloss only inside the strands selected with Bridge.
 
-The **Preview Tint** on the right side of the Target row only sets which color overlays the composite mask in the scene. **It doesn't affect saved output.**
+## Correct a result with Paint
 
-:::note[Slot Split preview doesn't enter the stack]
-[Slot Split](/tabs/slot-split) edits the mesh, not a mask, so its slot color preview overlays separately above the layers.
-:::
+If you paint on a generated result with [Paint](/tabs/paint), **only the painted part** is kept as a correction. Parts you did not paint follow later changes to the Gradient, Bridge and MatCap Gloss settings. Pressing Paint again returns to the same correction work.
 
-## Final Bake
+Generators and input image files are kept.
 
-The **Final Bake** button below the Layer row **composites all checked layers into one file**.
+## Save a layer {#레이어-저장}
 
-| Saves | Filename |
+**Save Layer** saves only the layer you choose, as one file.
+
+A drawing that is not connected to a layer is restored as a standalone canvas, without replacing an existing layer. Save the drawing with **Save Layer** first, then choose the layer to edit. In this case Scene editing does not start automatically, and undo history does not carry over into the restored canvas.
+
+## Mask Output {#마스크-출력}
+
+**Save and apply → Mask Output** combines the current mask's layers, saves the result, and connects it to the material.
+
+| Item | Description |
 |---|---|
-| Composite mask | `<mesh>_<material>_Final.png` |
-| Color (only if Gradient/Paint Color layers are checked) | `<mesh>_<material>_FinalColor.png` |
+| Output size | Choose the resolution to save |
+| UV edge bleed | Choose how far color spreads past the UV edges |
+| Layer document | An editable layer document is saved with the output file |
 
-- The **Saves to** label above the button previews where it goes (base map folder → material folder → `Assets`).
-- If a same-named file exists, you're asked Overwrite / New Name / Cancel.
-- **What you see in the scene view is what gets baked.** Preview and Final Bake use the same composite formula.
+You can reopen an existing PNG or document and keep editing the same mask. When you overwrite a file, check the save path you selected.
 
-The per-tab **Bake** buttons stay and bake **that layer only**. Use them when you need one result separate.
+A 1.x layer document is converted to the new format the first time you save it in 2.0. The original is backed up under `Library/StudioRaming/MaskMaker/DocumentBackups/`, and a converted document cannot be opened in 1.x.
 
-## Multiple targets
+## Data from earlier versions
 
-The layer stack is per (renderer · material slot). If you have 2+ stacks, a **Target popup** appears on the left of the Layer row. Show/hide and Final Bake apply to whichever target you pick.
+Data for Stencil, Decal, Cavity/AO and color layers is kept. The list for creating new masks shows only [Paint, Image, Gradient, Bridge and MatCap Gloss](/tabs/paint).
 
-→ [Material Slot Picker](/getting-started/first-mask#머티리얼-슬롯-피커)
+Stencil, decal and cavity/AO layers from 1.x are kept and marked as preserved.
 
-## Scene click during preview
+## Undo and automatic keep {#되돌리기와-자동-보존}
 
-While preview is on, **a plain left-click in the scene view won't select another object.** This prevents accidentally switching targets mid-work. `Alt` + drag camera rotation and `Ctrl` click/drag behavior stay the same.
+- **Undo steps**: each apply, each selection change, and each stroke is one step (`Ctrl+Z` · `Ctrl+Y`).
+- **Automatic keep**: unsaved work is kept on script reload, Play, scene change and when editing stops, and is restored when you come back.
+- **After an unexpected quit**: in the recovery banner at the top of the window, choose **Restore** or **Discard**.
 
-→ [Hotkeys](/reference/hotkeys)
+If the recovery file cannot be written (for example, because of disk space or permissions), an emergency copy is kept in memory. A memory copy is lost when the Unity process ends, so choose **Open work** or **Cancel** in the quit prompt and save first.
 
-## Preview material stuck on mesh
-
-If the editor force-closes before preview is cleaned up, the mesh may show preview material left behind (white).
-
-- Open the window again — it **auto-restores**.
-- To restore without opening, use the **Recover Preview** button at the top of the **?** help screen.
+→ [Troubleshooting](/troubleshooting)

@@ -5,7 +5,6 @@ sidebar_position: 4
 ---
 
 # Slot Split
-
 **By the end of this page** you'll know how to click strands to move them into a different material slot, create a new mesh, and swap it into the scene.
 
 **Creates:** A **mesh asset**, not a mask. Use this when different parts need completely different shaders.

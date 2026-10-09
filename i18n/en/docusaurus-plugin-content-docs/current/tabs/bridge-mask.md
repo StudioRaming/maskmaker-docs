@@ -1,119 +1,79 @@
 ---
 id: bridge-mask
-title: Bridge + Region Mask
-sidebar_position: 3
+title: Bridge
+sidebar_position: 4
 ---
 
-# Bridge + Region Mask
+# Bridge
 
-**By the end of this page** you'll know how to randomly select hair strands or click them manually to make a mask, and how auto-assign works to plug into a shader slot the moment you save.
+**After reading this page, you will know** how to pick hair strands, at random or by clicking, and make a grayscale mask from them.
 
-**Creates:** Grayscale mask PNG — for NiloToon stacking layer / isolation mask
+**What it makes:** A grayscale mask that is white only on the hair strands you picked
 
-<!-- SCREENSHOT: Bridge + Region Mask tab — Random strands / Manual pick toggle, ratio slider, recent seed chips -->
+## Steps
 
-## Two modes
+1. Pick the hair model and click **Use current selection**.
+2. In the right panel, pick a mask or open an empty slot, and choose **Bridge** as the method.
+3. Pick strands in **Random strands** mode, or click them in the Scene view in **Manual selection** mode.
+4. Check the result with **Applied result**.
+5. Save from **Save and apply → Mask Output**.
 
-Toggle between them at the top of the tab. **Both modes share the selected/unselected strands** — you can randomize, tweak by hand, then re-randomize and your edits stay.
+If **Read/Write Enabled** is off on the mesh, Bridge asks whether it may turn it on. If you allow it, it turns it on.
 
-| Mode | Behavior | Typical use |
-|---|---|---|
-| **Random strands** | Auto-select strands by ratio and seed; refine with clicks | Bridge (highlight) dye — color only some hair |
-| **Manual pick** | No auto-select. Only clicked strands white | Isolate specific region |
+## Random strands settings
 
-:::note[Manual pick is the old "Isolate" tab]
-In v0.1.1, Isolate merged into Bridge. Behavior is identical, and the `_Isolation` suffix in output filename is preserved — existing work files won't have name mismatches.
-:::
+| Item | Meaning |
+|---|---|
+| **Strand percent (%)** | The share of all strands to pick at random. It sets the bridge density |
+| **Strand thickness (%)** | The share of faces used inside each strand. Lower it to keep only the center line |
+| **Size filter (%)** | Only the N% smallest strands by surface area count as candidates. Lower it to leave out large sheets |
+| **Front strands only** | Leaves out strands at the back of the mesh (by Z) |
+| **Seed** / **Random seed** | The same seed always gives the same result. **Recent seeds** brings back an earlier seed |
+| **Expand** | Do not add / Nearby strands (5 mm) / Shared vertices. Adds the strands next to the picked ones |
+| **Scope** | Selected area or whole mesh |
+| **Blur** | Softens the face edges with a Gaussian blur. 0 is off. 1 to 3 is recommended |
+| **Edge fade** | Fades the edges out gradually (fade pixels and fade curve) |
+| **Tint (preview)** | A color drawn over the preview only. The saved mask is always grayscale |
 
-## Procedure
+**Invert selection** and **Grow selection** flip the picked strands or add neighboring strands.
 
-1. Pick **Random strands** / **Manual pick** mode at top
-2. Select hair object → **Load** — preview starts right there
-3. (Random strands) Adjust strand **ratio / thickness / size filter** and hit **Random Seed** until you like it
-4. Hover over strands in scene view to preview, `Ctrl` + click to add/remove
-5. Use panel buttons to refine
-6. **Bake** — saves grayscale mask PNG (doesn't change materials). If you need to combine this with other tab results into one layer, use **Final Bake** at the top → [Layer Stack and Final Bake](/concepts/layer-stack)
+## Picking in the Scene view
 
-If mesh has multiple materials, pick the active slot from thumbnails at top.
-→ [Material Slot Picker](/getting-started/first-mask#머티리얼-슬롯-피커)
-
-## Scene view operation
-
-Hovering over a strand shows the result in color.
+Hover over a strand to preview the result in color.
 
 | Highlight | Meaning |
 |---|---|
-| **Cyan** (`#33CCFF`) | `Ctrl` + click will **add** |
-| **Red** (`#FF5544`) | `Ctrl` + click will **remove** |
+| **Cyan** (`#33E5FF`) | Strand not picked yet. `Ctrl` + click adds it |
+| **Red** (`#FF4033`) | Strand already picked. `Ctrl` + click removes it |
 
-| Operation | Result |
+| Action | Result |
 |---|---|
-| `Ctrl` + click | Add / remove strand |
-| `Ctrl` + drag | Toggle strands like painting |
-| `Ctrl+Shift` + drag | Box add-select |
-| `Ctrl+Shift+Alt` + drag | Box deselect |
-| Plain click | Select scene objects normally |
-| `Ctrl+Z` / `Ctrl+Y` | Undo / Redo |
+| `Ctrl` + click | Adds or removes a strand |
+| `Ctrl` + drag | Toggles the strands you drag over, like a paint brush |
+| `Ctrl+Shift` + drag | Box-selects and adds strands |
+| `Ctrl+Shift+Alt` + drag | Box-selects and removes strands |
+| `Ctrl+Z` / `Ctrl+Y` | Undo / redo |
 
-Front/back and mirror strands **auto-toggle together**; the status bar shows how many toggled.
+Front and back faces, and mirrored strands that share UVs, toggle together. All the keys are on [Hotkeys](/reference/hotkeys).
 
-<!-- SCREENSHOT: Scene view — strands with cyan/red highlights -->
+<!-- SCREENSHOT: Scene view with cyan and red strand highlights -->
 
-## Refine selection
+## Combining with other methods
 
-| Button | Does |
-|---|---|
-| Select All | Select all strands |
-| Deselect All | Clear selection |
-| Invert Selection | Flip select/unselect |
-| Grow Selection | Widen to adjacent strands |
+If you add a [Gradient](/tabs/gradient) or [MatCap Gloss](/tabs/matcap-gloss) to a bridge result with **Limit area**, the effect stays only inside the strands you picked.
 
-| Option | Does |
-|---|---|
-| **Backface Mode** | Hide front, show back only, pick inner/opposite strands without rotating camera. **Doesn't affect saved mask** |
-| **UV Overlap strands together** | Toggle double-sided sheet / mirror strands at once |
-
-Selection **persists across mode changes and preview toggles**, but **resets on Load**.
-
-## Random Seed and Recent Seeds
-
-Each **Random Seed** button press gives a different combo. If you passed a good one, click the **Recent Seeds** chip next to it to return to that seed.
-
-<!-- SCREENSHOT: Random Seed button and Recent Seeds chip list -->
-
-| Filter | Does |
-|---|---|
-| Strand ratio | Percent of total strands to pick |
-| Thickness filter | Only thin / thick strands |
-| Size filter | Only small / large strands |
-
-## Post-processing
-
-| Option | Does |
-|---|---|
-| Gradient | Fade mask value root→tip along strands |
-| Edge fade | Soften strand edges (pixel size + softness) |
-| Tint color | **Preview only.** Saved mask is always grayscale |
+→ [Layers and mask output](/concepts/layer-stack)
 
 ## Auto-assign after bake
 
-This tab makes a mask PNG, and **wiring to materials is an optional assisted feature.**
+With **Auto-assign after bake** on, the saved mask is connected automatically to an assignable slot on the material. It works only with NiloToon, lilToon, and Poiyomi materials. It is off by default, and you can undo it.
 
-**Auto-assign after bake** is **off by default**. Turn it on and the saved mask plugs straight into the slot you pick below (usually NiloToon stacking layer). Results show in the status bar how many were assigned and how many skipped; undo with one `Ctrl+Z`.
+## Painting to refine
 
-Turn it off and only the mask saves; materials stay as they were — wire them yourself following [First mask](/getting-started/first-mask) steps 3–4.
+Painting over a bridge result with [Paint](/tabs/paint) keeps only the painted part as a correction.
 
-## Send to the Paint tab
+## Saving
 
-The **send to the Paint tab** button passes the current selection mask to the [Paint tab](/tabs/paint) so you can hand-paint more. Works in both modes.
+The output file is grayscale and is imported with sRGB off. A file saved in **Manual selection** mode ends with `_Isolation`. A file saved in **Random strands** mode ends with `_BridgeMask`.
 
-## Where to assign
-
-| Shader | Slot |
-|---|---|
-| NiloToon | `Base Map ▸ Stacking Layer 1..10 ▸ Mask Tex` — auto-assign target |
-| lilToon | `Main Color ▸ 2nd ▸ Mask` · `Main Color ▸ 3rd ▸ Mask` |
-| Poiyomi | `RGBA Color Masking ▸ Masks` (after grouping 4 with Combiner) |
-| MingToon | `Region ▸ Region Mask` (after grouping 4 parts with Combiner) |
-
-Full table → [Shader connections](/shaders/nilotoon)
+→ [sRGB and import settings](/concepts/srgb-and-import-settings)

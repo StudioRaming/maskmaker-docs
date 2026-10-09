@@ -6,56 +6,54 @@ sidebar_position: 3
 
 # sRGB and import settings
 
-**By the end of this page** you can fix the most common cause of "mask assigned but effect looks wrong" — import settings.
+**After reading this page, you will know** the import settings behind the most common cause of "the mask is applied but the effect looks wrong".
 
-## Why turn off sRGB
+## Why sRGB must be off
 
-sRGB (Color Texture) tells Unity **"this texture is color for human eyes."** With it on, Unity applies gamma correction, so the saved pixel value and the value the shader reads differ.
+sRGB (Color Texture) tells Unity **"this texture is a color that people will see."** When it is on, Unity applies gamma correction, so the stored pixel values and the values the shader reads are different.
 
-That's correct for colors. But **masks are numbers.** Gray baked at 0.5 must read as 0.5 in the shader.
+That is correct for color. A mask is **numbers**, though. A gray baked at 0.5 must be read as 0.5 by the shader.
 
-| Texture type | sRGB | Why |
+| Texture type | sRGB | Reason |
 |---|---|---|
-| Mask (grayscale, values) | **Off** | Values must read as-is |
-| Gradient result (color) | **On** | Actual visual color |
-| Paint — mask mode | **Off** | Saved linear |
-| Paint — color mode | **On** | Saved sRGB |
-| Combiner pack texture | **Off** | All four channels are values |
+| Grayscale masks (output from Paint, Image, Gradient, Bridge, MatCap Gloss) | **Off** | The value must be read as it is |
+| Packed texture made with the Mask Combiner | **Off** | All four channels hold values |
 
-<!-- SCREENSHOT: Texture Import Settings — sRGB (Color Texture) unchecked -->
 
-:::tip[What Mask Maker bakes is already correct]
-Mask Maker applies correct settings at save time. You only need to verify **masks made outside and brought in.**
+<!-- SCREENSHOT: Texture Import Settings with sRGB (Color Texture) turned off -->
+
+:::tip[Grayscale masks from Mask Output are already set correctly]
+**Mask Output** imports grayscale masks with sRGB turned off. You only need to check masks that you imported from outside.
 :::
 
-## Check and fix procedure
+## Check and fix
 
 1. Select the texture in the Project window.
-2. In the Inspector, uncheck **sRGB (Color Texture)**.
-3. Click **Apply**. It won't apply if you don't.
+2. In the Inspector, turn off **sRGB (Color Texture)**.
+3. Press **Apply**. The change does not take effect until you press it.
 
-## Related import settings to review
+## Other import settings to check
 
-| Setting | Recommended for masks | Why |
+| Setting | Recommended for masks | Reason |
 |---|---|---|
 | sRGB (Color Texture) | Off | See above |
-| Alpha Is Transparency | Off | Keep alpha channel untouched when used as mask data |
-| Compression | None or High Quality | Block compression clumps channels. Especially **packed mask textures** see channels bleed into each other |
-| Generate Mip Maps | Taste | On = distant edges soften, thin masks blur. Off = sharp throughout |
-| Wrap Mode | Clamp | No reason to repeat outside UV bounds |
-| Max Size | 512–1024 | Masks only care about boundaries |
+| Alpha Is Transparency | Off | Stops Unity from changing values when the alpha channel is used as a mask channel |
+| Compression | None or High Quality | Block compression blurs the channels. This is especially visible in **packed textures** |
+| Generate Mip Maps | Your choice | Edges look softer at a distance, and thin masks get blurry |
+| Wrap Mode | Clamp | There is no reason for the mask to repeat outside the UV area |
+| Max Size | 512 to 1024 | Only the mask boundary matters |
 
-:::danger[Packed textures are especially vulnerable to compression]
-DXT/BC compression doesn't handle channels independently. R channel boundaries bleed into G — that's where it happens. If a [channel-packed](/concepts/channels-and-packing) texture looks wrong, suspect compression first.
+:::danger[Packed textures are especially sensitive to compression]
+DXT and BC compression do not treat channels independently. This is why the R channel boundary can look smeared into G. If a [packed texture](/concepts/channels-and-packing) looks wrong, suspect compression first.
 :::
 
-## Is UV correct?
+## Check the UV
 
-Masks are read against the **same UV map as the main texture.** If you assigned a mask and the effect appears in the completely wrong place, that slot might be set to a UV channel other than UV1.
+A mask is read using **the same UV map** as the main texture. If the effect appears in a completely wrong place, the slot may be set to use a UV channel other than UV1.
 
-Mask Maker bakes using the mesh's UV as-loaded, so masks made in-tool always match the main texture's UV.
+Mask Maker builds masks from the UVs of the loaded mesh, so a mask made inside the tool always uses the same UV as the main texture.
 
-## Related docs
+## Related pages
 
 - [What is a mask texture](/concepts/what-is-a-mask)
 - [Channels and packing](/concepts/channels-and-packing)

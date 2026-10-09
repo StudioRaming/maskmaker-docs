@@ -11,9 +11,13 @@
     "message": "개념",
     "description": "The label for category '개념' in sidebar 'docsSidebar'"
   },
-  "sidebar.docsSidebar.category.탭": {
-    "message": "탭",
-    "description": "The label for category '탭' in sidebar 'docsSidebar'"
+  "sidebar.docsSidebar.category.마스크 만들기 방법": {
+    "message": "마스크 만들기 방법",
+    "description": "The label for category '마스크 만들기 방법' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.전문가 도구": {
+    "message": "전문가 도구",
+    "description": "The label for category '전문가 도구' in sidebar 'docsSidebar'"
   },
   "sidebar.docsSidebar.category.셰이더 연결": {
     "message": "셰이더 연결",

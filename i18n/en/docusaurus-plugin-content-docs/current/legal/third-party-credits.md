@@ -1,59 +1,51 @@
 ---
 id: third-party-credits
-title: Third-party credits
+title: Third-party notices
 sidebar_position: 920
 ---
 
-# Third-party credits
+# Third-party notices
 
-**By the end of this page** you'll know what's inside Mask Maker and what isn't.
+**After reading this page, you will know** what Mask Maker includes and what it does not.
 
-## Third-party code bundled — none
+## Bundled third-party code
 
-Mask Maker **contains no third-party code.** All Editor scripts written directly by StudioRaming; no external libraries outside Unity editor API.
+Mask Maker's Editor scripts were written by StudioRaming. It does not use any external library other than the Unity Editor API.
 
 | Item | Status |
 |---|---|
 | External C# libraries | None |
-| Bundled open-source code | None |
 | Runtime dependencies | None (Editor only) |
-| Required prerequisites | None |
+| Required prerequisite packages | None |
 
-Only `Assets/StudioRaming/MaskMaker` folder installs; no other assets required.
+
+
+### Oklab color space (MIT)
+
+Mask Maker uses code ported from Björn Ottosson's Oklab formulas for color interpolation. The original is at <https://bottosson.github.io/posts/oklab/>. The full MIT license text is in Oklab-LICENSE.txt.
 
 ## Built-in stencil images
 
-Anime hair highlight stencils **8 types** in [Paint tab](/tabs/paint#스텐실) are **original assets made directly by StudioRaming**.
 
-| File | Shape |
-|---|---|
-| `angel_ring.png` | Angel ring |
-| `crescent.png` | Crescent |
-| `double_ring.png` | Double ring |
-| `star4.png` | 4-point star |
-| `diamond.png` | Diamond |
-| `wave.png` | Wave |
-| `zigzag.png` | Zigzag |
-| `dashes.png` | Dashes |
 
-Not images from outside; no third-party license applies.
+The 2.0 package includes eight built-in stencil images in the `Editor/Stencils` folder. They are original assets made by StudioRaming. They are not imported from outside, and no third-party license applies to them.
 
-## About referenced shaders
+## Shaders this tool refers to
 
-Mask Maker **references property names and inspector paths** of the following shaders to plug in masks. Their code or assets are **not included**; each is a separate product.
+Mask Maker refers to the **property names and inspector paths** of the following shaders, so it can plug masks in. It does **not** include the code or assets of these shaders. Each is a separate product.
 
-| Shader | Relation |
+| Shader | Relationship |
 |---|---|
 | lilToon | Connection target. Code not included |
 | Poiyomi Toon | Connection target. Code not included |
-| MingToon | Connection target. Code not included (StudioRaming separate product) |
+| MingToon | Connection target. Code not included (a separate StudioRaming product) |
 | NiloToon | Connection target. Code not included |
 
-Trademarks and copyrights of each shader belong to their respective holders. Mask Maker installs, compiles, and runs without these shaders.
+Each shader's trademarks and copyrights belong to its rights holder. Mask Maker installs, compiles and runs even when these shaders are not installed.
 
 ## Documentation site
 
-This site is built with [Docusaurus](https://docusaurus.io/) (MIT License, Meta Platforms, Inc.). Search uses [@easyops-cn/docusaurus-search-local](https://github.com/easyops-cn/docusaurus-search-local) (MIT License); index is built-in and transmits nothing externally.
+This site is built with [Docusaurus](https://docusaurus.io/) (MIT License, Meta Platforms, Inc.). Search uses [@easyops-cn/docusaurus-search-local](https://github.com/easyops-cn/docusaurus-search-local) (MIT License). The search index is built into the site, so nothing is sent to an outside service.
 
 ## Contact
 

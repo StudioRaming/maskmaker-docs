@@ -5,7 +5,6 @@ sidebar_position: 5
 ---
 
 # Combiner
-
 **By the end of this page** you'll know how to reduce multiple masks into one, scan an entire avatar to create packs, and how Pack + Reassign is an optional assisted feature that rewires materials — undoable in one undo.
 
 **Creates:** Channel-packed texture, plus optionally rewritten materials pointing to it

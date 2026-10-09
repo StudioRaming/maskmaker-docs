@@ -5,7 +5,6 @@ sidebar_position: 2
 ---
 
 # Channels and packing
-
 **By the end of this page** you'll understand why R/G/B/A channels can hold four masks, how different shaders select which channel to read, and how those methods differ.
 
 ## Four channels = four masks
@@ -30,7 +29,7 @@ This is where shaders differ. Mask Maker's [Combiner](/tabs/combiner) auto-optim
 | Method | Internal label | Shader | Behavior |
 |---|---|---|---|
 | Channel vector | `Vector4Dot` | NiloToon | A vector like (1,0,0,0) sits beside the mask slot; dot product with pixel selects the channel. Any channel is free |
-| Channel index | `FloatIndex` | Poiyomi 9.x | A `…Channel` property holds 0/1/2/3 to select the channel. Any channel is free |
+| Channel index | `FloatIndex` | Poiyomi | A `…Channel` property holds 0/1/2/3 to select the channel. Any channel is free |
 | R fixed | `FixedR` | lilToon | Shader always reads only R. Must be placed in the **R slot** of the pack |
 
 Free placement (first two) — Combiner can group and fill from unused channels upward. R fixed (lilToon) — only one per pack, so Combiner prioritizes lilToon slots to R.
@@ -55,14 +54,14 @@ For these slots, **channel packing** (manual mode) in Combiner is safer — you 
 
 ## Textures you shouldn't pack
 
-Combiner auto-optimize **automatically excludes** these. Reason appears in the exclusion list; you can toggle **Include** if needed.
+Combiner auto-optimize **automatically excludes** these. The exclusion list shows the reason for each one.
 
 | Exclusion reason | Why |
 |---|---|
-| Already channel packed | Different data in each channel, can't move to one channel |
-| Not grayscale | Uses color information (gradient result, etc.) |
-| Multiple channel references | One texture referenced by multiple channels |
-| Alpha channel in use | Data already in the alpha |
+| Looks already packed | A pixel check finds values that suggest a packed texture (the suspect pixel count is shown) |
+| Pack texture name | The name contains `_Pack` or `Packed` |
+| Material reads its A channel | The alpha already holds data |
+| Excluded by hand | You excluded it yourself |
 
 ## Unpacking channels
 

@@ -1,60 +1,52 @@
 ---
 id: third-party-credits
-title: サードパーティ表記
+title: サードパーティの表記
 sidebar_position: 920
 ---
 
-# サードパーティ表記
+# サードパーティの表記
 
-**このページを読むと** Mask Maker に何が含まれており何が含まれていないのかがわかります。
+**このページを読むと** Mask Maker に何が含まれていて、何が含まれていないかが分かります。
 
-## バンドルされたサードパーティ コード — なし
+## 同梱しているサードパーティのコード
 
-Mask Maker には**サードパーティ コードが含まれていません。**すべての Editor スクリプトは StudioRaming が直接作成しており、Unity エディタ API 以外の外部ライブラリを使用していません。
+Mask Maker の Editor スクリプトは StudioRaming が作成しました。Unity Editor API 以外の外部ライブラリは使用していません。
 
 | 項目 | 状態 |
 |---|---|
-| 外部 C# ライブラリ | なし |
-| バンドルされたオープン ソース コード | なし |
-| ランタイム依存性 | なし(エディタのみ) |
-| 必須前提パッケージ | なし |
+| 外部の C# ライブラリ | なし |
+| ランタイムの依存関係 | なし（Editor 専用） |
+| 必須の前提パッケージ | なし |
 
-`Assets/StudioRaming/MaskMaker` 1 つのフォルダだけがインストールされ、他のアセットを要求しません。
 
-## 内蔵ステンシル画像
 
-[ペイント タブ](/tabs/paint#스텐실)に含まれるアニメ ヘアハイライト ステンシル**8 種**は**StudioRaming が直接製作したオリジナル アセット**です。
+### Oklab 色空間（MIT）
 
-| ファイル | 形状 |
-|---|---|
-| `angel_ring.png` | 天使の輪 |
-| `crescent.png` | 三日月 |
-| `double_ring.png` | ダブルリング |
-| `star4.png` | 4 角星 |
-| `diamond.png` | ひし形 |
-| `wave.png` | 波 |
-| `zigzag.png` | ジグザグ |
-| `dashes.png` | 破線 |
+Mask Maker は、色の補間に Björn Ottosson の Oklab の式を移植したコードを使用しています。原典は <https://bottosson.github.io/posts/oklab/> にあります。MIT ライセンスの全文は Oklab-LICENSE.txt にあります。
 
-外部から取得した画像ではなく、どのサードパーティ ライセンスも適用されません。
+## 内蔵のステンシル画像
 
-## 言及されるシェーダーについて
 
-Mask Maker は以下のシェーダーの**プロパティ名とインスペクター経路を参照**してマスクを挿すことができます。これらのシェーダーのコードまたはアセットは**含まれておらず**、各々別個の製品です。
+
+2.0 のパッケージの `Editor/Stencils` フォルダーに、内蔵のステンシル画像が 8 種入っています。これらは StudioRaming が自ら制作したオリジナルのアセットです。外部から取り込んだ画像ではなく、サードパーティのライセンスは適用されません。
+
+## このツールが参照するシェーダーについて
+
+Mask Maker は、以下のシェーダーの **プロパティ名とインスペクターのパスを参照** して、マスクを差し込みます。これらのシェーダーのコードやアセットは **含まれていません**。それぞれ別の製品です。
 
 | シェーダー | 関係 |
 |---|---|
-| lilToon | 接続対象。コード未含 |
-| Poiyomi Toon | 接続対象。コード未含 |
-| MingToon | 接続対象。コード未含(StudioRaming の別製品) |
-| NiloToon | 接続対象。コード未含 |
+| lilToon | 接続先。コードは含まない |
+| Poiyomi Toon | 接続先。コードは含まない |
+| MingToon | 接続先。コードは含まない（StudioRaming の別製品） |
+| NiloToon | 接続先。コードは含まない |
 
-各シェーダーの商標と著作権は該当する権利者にあります。Mask Maker はこれらのシェーダーがインストールされていなくてもインストール・コンパイル・動作します。
+各シェーダーの商標と著作権は、それぞれの権利者にあります。Mask Maker は、これらのシェーダーがインストールされていなくても、インストールとコンパイルができ、動作します。
 
-## ドキュメント サイト
+## ドキュメントサイト
 
-このサイトは[Docusaurus](https://docusaurus.io/)(MIT License、Meta Platforms, Inc.)で製作されました。検索は[@easyops-cn/docusaurus-search-local](https://github.com/easyops-cn/docusaurus-search-local)(MIT License)を使用し、インデックスはサイト内に組み込まれており、外部に何も送信されません。
+このサイトは [Docusaurus](https://docusaurus.io/)（MIT License、Meta Platforms, Inc.）で作られています。検索には [@easyops-cn/docusaurus-search-local](https://github.com/easyops-cn/docusaurus-search-local)（MIT License）を使っています。検索インデックスはサイト内に組み込まれており、外部へ何も送信しません。
 
-## 問い合わせ
+## お問い合わせ
 
 studioraming@gmail.com

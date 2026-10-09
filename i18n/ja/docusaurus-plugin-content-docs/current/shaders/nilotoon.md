@@ -6,58 +6,50 @@ sidebar_position: 4
 
 # NiloToon
 
-**このページを読むと** NiloToon のどのスロットにどのマスクが入るのか、どのタブでそれを作成するのかがわかります。
+**このページを読むと** NiloToon のどのスロットにどのマスクを入れるか、どの方法で作るかが分かります。
 
-:::note[NiloToon はチャンネル ベクトルでチャンネルを選択します]
-マスク スロット隣に `(1,0,0,0)` のようなベクトルがあり、そのベクトルとピクセルの内積でチャンネルを選択します。どのチャンネルでも自由に使用できます。[コンバイナー](/tabs/combiner)の**パック + 再割り当て**がこのベクトルを直接操作します。
+:::note[NiloToon はチャンネルベクトルでチャンネルを選びます]
+マスクのスロットの横に `(1,0,0,0)` のようなベクトルがあり、そのベクトルとピクセルの内積でチャンネルを選びます。どのチャンネルも自由に使えます。詳細作業ツールの [コンバイナー](/tabs/combiner) でまとめるとき、このベクトルも合わせて設定されます。
 → [チャンネルとパッキング](/concepts/channels-and-packing)
 :::
 
-## よく使うマスク
+## スタッキングレイヤーのマスク
 
-| プロパティ | インスペクター経路 | 用途 | 作成タブ |
+| プロパティ | インスペクターのパス | 用途 | 作り方 |
 |---|---|---|---|
-| `_BaseMapStackingLayer1MaskTex` | `Base Map ▸ Stacking Layer 1..10 ▸ Mask Tex` | ベース カラーの上に別の色(ブリッジ染色など)を重ねる部位をレイヤー(1～10)ごとに指定 — チャンネル選択あり。**もっともよく使うマスク** | [ブリッジ+領域マスク](/tabs/bridge-mask) |
+| `_BaseMapStackingLayer1MaskTex` | `Base Map ▸ Stacking Layer 1..10 ▸ Mask Tex` | ベースカラーの上に別の色を重ねる部位を、レイヤー（1〜10）ごとに指定します。チャンネル選択があります | [ブリッジ](/tabs/bridge-mask) |
 
-レイヤー 2～10 はプロパティ名の数字を変えるだけです(`_BaseMapStackingLayer2MaskTex` …)。
+レイヤー 2〜10 は、プロパティ名の数字だけを変えます（`_BaseMapStackingLayer2MaskTex` …）。
 
-## その他のマスク
+## そのほかのマスク
 
-| プロパティ | インスペクター経路 | 用途 | 作成タブ |
+| プロパティ | インスペクターのパス | 用途 | 作り方 |
 |---|---|---|---|
-| `_EmissionMaskMap` | `Emission ▸ Mask Map` | 自己発光が出る部位 | [ペイント](/tabs/paint) |
-| `_SmoothnessMap` | `Smoothness ▸ Map` | 部位ごとの滑らかさ(グロス) | [MatCapグロス](/tabs/matcap-gloss) |
-| `_SpecularMap` | `Specular ▸ Specular Map` | スペキュラ ハイライトが表示される部位 | [MatCapグロス](/tabs/matcap-gloss) |
-| `_MatCapAdditiveMaskMap` | `MatCap Additive ▸ Mask Map` | MatCap グロスが加算される部位 — **グロス タブでベイクしたマスクがこの場所用** | [MatCapグロス](/tabs/matcap-gloss) |
-| `_OcclusionMap` | `Occlusion ▸ Occlusion Map` | 凹んだ部分を暗くする程度(AO) — **MatCap タブの AO/キャビティ モードでベイクしたマスク用** | [MatCapグロス](/tabs/matcap-gloss) |
-| `_OutlineWidthTex` | `Outline ▸ Mask Map` | アウトライン幅を部位ごとに調整 | [ペイント](/tabs/paint) |
-| `_SkinMaskMap` | `Skin ▸ Mask Map` | 肌専用シェーディング(肌トーン補正)を適用する部位 | [ペイント](/tabs/paint) |
+| `_EmissionMaskMap` | `Emission ▸ Mask Map` | 自発光が出る部位 | [描く](/tabs/paint) |
+| `_SmoothnessMap` | `Smoothness ▸ Map` | 部位ごとの滑らかさ（光沢） | [マットキャップ光沢](/tabs/matcap-gloss) |
+| `_SpecularMap` | `Specular ▸ Specular Map` | スペキュラーのハイライトが出る部位 | [マットキャップ光沢](/tabs/matcap-gloss) |
+| `_MatCapAdditiveMaskMap` | `MatCap Additive ▸ Mask Map` | マットキャップの光沢を足す部位 | [マットキャップ光沢](/tabs/matcap-gloss) |
+| `_OcclusionMap` | `Occlusion ▸ Occlusion Map` | くぼんだ部分を暗くする度合い（AO） | [描く](/tabs/paint) または [画像](/tabs/image) で作ったグレースケールのマスクを差し込みます。AO 専用の方法はありません |
+| `_OutlineWidthTex` | `Outline ▸ Mask Map` | 部位ごとのアウトラインの太さ | [描く](/tabs/paint) |
+| `_SkinMaskMap` | `Skin ▸ Mask Map` | 肌専用のシェーディングを掛ける部位 | [描く](/tabs/paint) |
 
 <!-- SCREENSHOT: ヘルプパネルの NiloToon 接続表 -->
 
-## 自動割り当てで 3～4 ステップをスキップ
+## 差し込む手順
 
-[ブリッジ+領域マスク](/tabs/bridge-mask)タブで**ベイク後に自動割り当て**を有効にしておくと、保存と同時にスタッキング レイヤー スロットに直接挿します。対象プロパティも一緒に選択できます。
+1. **保存・適用 → マスク出力** でマスクを出力します。
+2. テクスチャを選び、Inspector で **sRGB (Color Texture)** をオフにして **Apply** を押します。
+3. マテリアルの Inspector で、上の表の対応するスロットにドラッグします。
+4. スロットの **チャンネルベクトル** を、実際にマスクのデータが入っているチャンネルに合わせます。コンバイナーでまとめていなければ、通常は R `(1,0,0,0)` です。
+5. スタッキングレイヤーには、レイヤーを有効にする **別のトグル** があります。オンになっているか確認してください。
 
-髪の毛数本だけ別の色にする作業が**ベイク → 完了**になります。
+:::tip[ブリッジから自動で差し込めます]
+[ブリッジ](/tabs/bridge-mask)の **ベイク後に自動割り当て** をオンにすると、保存したマスクをマテリアルの割り当て可能なスロットに自動で接続します。対象は NiloToon、lilToon、Poiyomi のマテリアルだけです。初期設定はオフで、Undo で戻せます。NiloToon では空のスタッキングレイヤーが対象になります。
+:::
 
-## 自動最適化
+効果が出ない場合は → [トラブルシューティング](/troubleshooting)
 
-コンバイナー自動最適化は NiloToon プロファイルで**35 個のマスク スロット**をスキャンします。スタッキング レイヤー 10 個が各々マスクを持つため、パックで削減する効果が最大です。
-
-→ [コンバイナー](/tabs/combiner)
-
-## 挿入順序
-
-1. マスクを**ベイク**します。
-2. テクスチャ選択 → Inspector で**sRGB (Color Texture) をオフ** → **Apply**。
-3. マテリアル Inspector の上の表のスロットにドラッグします。
-4. スロットの**チャンネル ベクトル**をマスク データが実際に入っているチャンネルに合わせます。コンバイナーで合成したものでなければ通常 R `(1,0,0,0)` です。
-5. スタッキング レイヤーは**レイヤー自体を有効にするトグル**が別途あります。有効になっていることを確認してください。
-
-効果が見えない場合 → [トラブルシューティング](/troubleshooting)
-
-## 関連ドキュメント
+## 関連ページ
 
 - [lilToon](/shaders/liltoon) · [Poiyomi](/shaders/poiyomi) · [MingToon](/shaders/mingtoon)
-- [ブリッジ+領域マスク](/tabs/bridge-mask)
+- [ブリッジ](/tabs/bridge-mask)

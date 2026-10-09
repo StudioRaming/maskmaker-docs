@@ -6,89 +6,73 @@ sidebar_position: 2
 
 # Settings and presets
 
-**By the end of this page** you'll know what Mask Maker saves where, what follows your project when you move it, and what doesn't.
+**After reading this page, you will know** where Mask Maker stores what, and which data moves with the project and which does not.
 
-## Save locations at a glance
+## Where data is stored
 
-| Data | Location | Moves with project | Survives package update |
+| Data | Location | Moves with the project | Kept when the package is updated |
 |---|---|---|---|
-| Per-tab last values (sliders, toggles, modes) | `EditorPrefs` (editor-global) | No | Yes |
-| Session temp state | `SessionState` (gone when editor closes) | — | — |
-| User shader profiles | `<Project>/MaskMakerProfiles/*.json` | **Yes** | **Yes** |
-| Paint auto-save canvas | `<Project>/Library/MaskMakerAutoSave/` | No (`Library` is cache) | Yes |
-| Baked textures & meshes | Original texture folder (`Assets` inside) | **Yes** | **Yes** |
+| Adjustment values and settings | `EditorPrefs` (global to the editor) | No | Yes |
+| Session temporary state | `SessionState` (gone when the editor closes) | - | - |
+| User shader profiles (Combiner) | `<Project>/MaskMakerProfiles/*.json` | **Yes** | **Yes** |
+| Recovery data, document backups, output recovery copies | `<Project>/Library/StudioRaming/MaskMaker/` | No (`Library` is a cache) | Yes |
+| Output textures and meshes | The source texture folder (inside `Assets`) | **Yes** | **Yes** |
 
-## EditorPrefs — remember values
+## Folders under Library
 
-Each tab's adjustment items are **remembered editor-globally**. Same values even when switching projects.
-
-| What is remembered | Examples |
+| Folder | What it holds |
 |---|---|
-| MatCap Gloss | Strength · contrast · roundness · dilate pixels · Gloss/AO submode · Cavity radius/samples/strength/contrast/invert |
-| Gradient | Axis · center · softness · fill direction · end capping · preview display mode |
-| Bridge + Region Mask | Ratio · gradient/edge fade · Backface Mode · Auto-assign after bake · target property |
-| Slot Split | Duplicate materials for new slots |
-| Combiner | lilToon alpha bake · confirm overwrite before save |
-| Paint | Brush radius · strength · falloff · Normal Limit · mirror axis · canvas size · Mask/Color mode |
-| Common | Language · Auto-load on Hierarchy selection change |
+| `Recovery/` | Work to restore after an abnormal exit (the recovery banner) |
+| `DocumentBackups/` | The original of an old-format document, kept before it is converted to the new format |
+| `OutputRecovery/` | Recovery copies made while an output file is being written |
+| `TextureBackups/` | The original PNG, kept before a Scene session overwrites it |
+| `SlotSplitUndo/` | Undo records for slot split work |
 
-:::note[Values look wrong?]
-`EditorPrefs` is editor-wide storage. Values touched in other projects carry over. Resetting each tab's items one by one is fastest.
+:::danger[Library is a cache folder]
+Deleting `Library` or copying the project to move it deletes the recovery data. **Save finished work.** Recovery guards against accidents. It is not a backup.
 :::
 
-## Presets
+## EditorPrefs
 
-| Tab | What presets contain |
+Adjustment values are remembered **globally for the editor**. A different project starts with the same values. The main items are:
+
+| Item | What it remembers |
 |---|---|
-| MatCap Gloss | Global direction · sphere size · full settings like strength/contrast |
-| Gradient | Colors · axis · range · **reference bone name** |
+| Paint **Occlude** option | The last value set in the paint panel (on by default) |
+| Bridge **Auto-assign after bake** | Off by default |
+| Bridge preset list | The bridge presets you saved (separate for random and manual mode) |
+| Help display | Whether the window shows its help |
 
-The Preset row appears as one line above the card — **[Preset ▾]** (current preset name, or `-` if none) **[Save]** **[Delete]** **[?]**. Clicking the rightmost **?** opens this page.
+:::note[If a value looks wrong]
+`EditorPrefs` is one store for the whole Unity editor. A value changed in another project carries over. The quickest fix is to reset the adjustment items one by one.
+:::
 
-Applying presets to different meshes or avatars reproduces the same settings. Gradient presets find the [Reference Bone](/tabs/gradient#기준-본) **by name** — reverts to world coordinates if no bone with that name exists.
-
-## Shader profile folder
+## Shader profile folder (Combiner)
 
 | Item | Value |
 |---|---|
 | Path | `<Project>/MaskMakerProfiles/*.json` |
-| Why outside `Assets` | So package updates don't delete them |
-| Read when | First scan once or when **Export Built-ins / Reload** button is pressed |
-| Name collision | **Overwrites on the spot** if matches built-in (keep matching priority). Warns in a row |
+| Why it is outside `Assets` | So that a package update does not delete it |
+| When it is read | Once at the first scan, or only when you press **Export built-ins / Reload** |
+| Name clashes | A profile with the same name as a built-in one overwrites it in place. A warning row tells you |
 
-Schema and examples → [Combiner — Shader Profile](/tabs/combiner#셰이더-프로파일)
+For the schema and examples, see → [Combiner: shader profile](/tabs/combiner#셰이더-프로파일)
 
-## Paint auto-save
+## Presets
 
-| Item | Value |
-|---|---|
-| Path | `<Project>/Library/MaskMakerAutoSave/` |
-| Saves when | Preview stops · recompile · play mode toggle · scene switch, when unsaved canvas exists |
-| Restore | Next **Load** asks **Restore / Discard / Cancel** |
-| Delete | Temp file deleted when actual save succeeds |
+The **preset row** appears on the MatCap Gloss, Gradient, and Bridge tabs. In the row's dropdown, pick a preset to **save** over it or **delete** it. If you pick `-` and save, a preset with an automatic name is created.
 
-Filename uses a session-fixed GUID — doesn't create new files on each switch, so 4K PNGs don't pile up.
+- Bridge keeps a separate list for **random strands** and for **manual selection**.
+- A preset name alone does not identify a preset. The same name in a different mode is a different preset.
 
-:::danger[Library is cache folder]
-Delete `Library` or move project by copying, and auto-save canvas disappears. **Always save finished work.** Auto-save is accident recovery, not backup.
-:::
+## Overwrite check
 
-## Overwrite confirmation
+When an output file with the same name already exists, Mask Maker asks **Overwrite / New name / Cancel**. Nothing is overwritten by accident.
 
-When saving with existing file of same name, asks **Overwrite / New Name / Cancel**. No accidental overwrites.
+## Recent work
 
-Combiner's manual save can enable **confirm overwrite before save** to ask every time.
+Under **Recent work** in the header, you can find the files saved in this session. You can find them in the Project window or open their folder.
 
-## Recent bakes
+## Auto-saved canvases from 1.x
 
-Each bake tab bottom shows saved texture list. **Ping** to highlight in Project view or **Open Folder** to open explorer.
-
-## Reset
-
-| What to undo | How |
-|---|---|
-| Tab adjustment values | Reset each item individually |
-| Slot Split strand moves | **Reset Moves** |
-| Slot Split slot structure | **Reset Structure** |
-| Combiner scan result | **Rescan** |
-| Scene view editing overall | `Ctrl+Z` |
+An auto-saved paint canvas that 1.x kept under `Library/MaskMakerAutoSave/` is imported once by 2.0, **when it is still in the same project**. Mask Maker moves the file into the paint recovery folder (under `Library/StudioRaming/MaskMaker/Recovery/Paint/`) with a `legacy_` prefix on its name, and deletes the old EditorPrefs keys. If the move fails, a warning is written to the Console.

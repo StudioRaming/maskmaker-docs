@@ -1,9 +1,9 @@
 // @ts-check
 
 // The category order mirrors the order a first-time user meets the tool:
-// what it is → install → the ideas a mask rests on → the six tabs, in the
-// order they sit in the window → the shader you plug the result into →
-// the flat reference.
+// what it is → install → the ideas a mask rests on → the five ways to make a
+// mask, in the order the window lists them → the expert tools → the shader you
+// plug the result into → the flat reference.
 //
 // Category labels are translated in
 // i18n/<locale>/docusaurus-plugin-content-docs/current.json.
@@ -31,16 +31,21 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '탭',
+      label: '마스크 만들기 방법',
       collapsed: false,
       items: [
-        'tabs/matcap-gloss',
+        'tabs/paint',
+        'tabs/image',
         'tabs/gradient',
         'tabs/bridge-mask',
-        'tabs/slot-split',
-        'tabs/combiner',
-        'tabs/paint',
+        'tabs/matcap-gloss',
       ],
+    },
+    {
+      type: 'category',
+      label: '전문가 도구',
+      collapsed: false,
+      items: ['tabs/slot-split', 'tabs/combiner'],
     },
     {
       type: 'category',

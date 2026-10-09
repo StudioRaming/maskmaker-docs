@@ -6,113 +6,71 @@ sidebar_position: 900
 
 # Troubleshooting
 
-**By the end of this page** you can walk through the most common symptoms in order to narrow down causes. Same content appears in tool header **?** button → FAQ.
+**After reading this page, you will know** how to go through the most common symptoms in order and narrow down the cause.
 
-## I plugged in the mask but don't see the effect
+## The mask is plugged in but the effect does not show
 
-Check in order. Usually #1.
+Check these in order. Most of the time it is step 1.
 
-1. **Check sRGB (Color Texture) is OFF**. If on, gamma correction distorts values.
+1. Check that **sRGB (Color Texture)** is off. If it is on, gamma correction changes the values.
    → [sRGB and import settings](/concepts/srgb-and-import-settings)
-2. If slot has **channel select** (R/G/B/A), check it matches the channel where mask data **actually lives**.
-3. Check the **parent toggle** that enables this property (lilToon's Rendering Mode, MingToon's `~ Enabled` toggle, NiloToon's stacking layer enable, etc.).
-4. Check **UV** uses the same map as the body texture.
+2. If the slot has a **channel picker** (R/G/B/A), check that it matches the channel that really holds the mask data.
+3. Check that the **parent toggle** that turns this property on is on (lilToon's Rendering Mode, MingToon's `~ Enabled` toggle, NiloToon's stacking layer enable, and so on).
+4. Check that **UV** uses the same map as the base texture.
 
-## Effect applies backwards
+## The effect is reversed
 
-Shader side **Invert** toggle is on, or mask was baked black-white reversed.
+The shader's **Invert** option is on, or the mask was made with black and white swapped.
 
-Flip either one — **check shader's Invert toggle first before re-baking**. MingToon has it on most properties; not all shaders have it.
+Flipping only one of the two is enough. Turn off the shader's Invert option before you output the mask again. Only shader slots that have an Invert option can use it.
 
-## Mask edges look like steps
+## The model looks white after loading
 
-1. **Increase dilate** (outline expand) value. Pushes color past UV edges to hide seams.
-2. Still no? Increase resolution (512 → 1024).
-3. Still no? Suspect **UV seam location**. If mask edge lands on a seam, no resolution cleans it up.
+This is the preview shown when there are no layers or when **Mask only** is on. The original material is unchanged. Turn off **Edit** to see the original look. Switching to **Original view** shows the same thing.
 
-Compression might be to blame — especially in [packed pack textures](/concepts/channels-and-packing), channels interfere.
+## The mask edge looks like stairs
+
+1. Raise the **Outline (px)** value in the output settings. It spreads the mask past the UV edge so the seam does not show.
+2. If that is not enough, raise the **Texture Size** (for example, 512 to 1024).
+3. If that is not enough, suspect the **UV seam** position. If the mask edge sits on a seam, no resolution will make it clean.
+
+Compression can also cause this, especially in a [packed texture](/concepts/channels-and-packing), where channels bleed into each other.
 → [sRGB and import settings](/concepts/srgb-and-import-settings)
 
-## I have multiple materials — where does it apply?
+## The buttons are grayed out
 
-Each tab operates on the **renderer's material slot from Load**. Pick the target slot from the **Material Slot Picker** below the target list. Only that submesh bakes, paints, and previews.
+Hover over a button to see what turns it on.
 
-→ [Material Slot Picker](/getting-started/first-mask#머티리얼-슬롯-피커)
+## I cannot find the file I saved
 
-## Where did the texture I just baked go?
+Click **Recent work** in the header. You can find it in the Project window or open its folder.
 
-Press **Ping** or **Open Folder** in **Recent Bakes** list at the bottom of each bake tab.
+## Other objects cannot be picked during a preview
 
-## Preview is stuck on the scene
-
-Press **Stop** or close the window — auto-restores. Recompile and play mode toggle also restore.
-
-Preview works by swapping in a duplicate of the material temporarily, so the original never changes.
-
-If the editor crashes before preview cleanup finishes, the mesh might show white (preview material stuck):
-
-1. Open the Mask Maker window again — it **auto-restores**.
-2. To restore without opening, use the **Recover Preview** button at the top of the **?** help screen. The **Self Test** button next to it runs the layer-compositing and preview-equals-bake checks and writes the result to the Console.
-
-## Switched tabs but previous tab preview stays
-
-Normal. Each tab's result sits in a **layer stack** on one mesh. To hide a specific tab's result without losing it, toggle its **checkbox** in the Layer row or click **Stop** on that tab — the layer stays, so turning it back on brings it back unchanged.
-
-→ [Layer Stack and Final Bake](/concepts/layer-stack)
-
-## Other objects won't select during preview
-
-This is intentional. While Preview is on, a plain left-click in the scene won't switch to another object. To select a different object, **Stop** preview or pick from Hierarchy. `Alt` + drag camera rotation still works.
+While a preview is on, a plain left click in the Scene view does not leave the target. To pick another object, select it in the Hierarchy. `Alt` + drag to orbit the Scene view still works.
 
 → [Hotkeys](/reference/hotkeys)
 
-## Can't grab strands in Scene view
+## Work is missing after an abnormal exit
 
-| Symptom | Check |
-|---|---|
-| Click does nothing | Are you holding `Ctrl` while clicking? Plain click selects Scene objects |
-| Can't grab inner/back strands | Turn on **Backface Mode**. Hides front so you can grab inside directly |
-| Multiple toggle at once | Normal. Front/back and mirror strands with overlapping UV toggle together; count shows in status bar |
-| Selection empty after Load | Selection clears on Load. Mode switch or preview toggle doesn't clear it |
+When the editor exits abnormally, a **recovery banner** appears at the top of the window. **Restore** brings the work back, and **Discard** deletes it.
 
-→ [Hotkeys](/reference/hotkeys)
+If the recovery file could not be written (a disk space or permission problem), the work may exist only in memory. Before you force-quit Unity, choose **Open work** and save first. If you choose **Quit without saving**, work that existed only in memory is lost.
 
-## Combiner skipped a texture
+→ [Layers and mask output](/concepts/layer-stack)
 
-In auto mode, excluded textures show **exclusion reason**. Check reason; if you need it anyway, press **Include**.
+## Painting goes through to the back
 
-→ [Combiner](/tabs/combiner)
+If the **Occlude** option in the paint panel is off, painting goes through hidden faces (X-Ray). Turn **Occlude** on to skip the faces the camera cannot see.
 
-## Combiner won't auto-scan
+→ [Paint options](/tabs/paint)
 
-Auto scan turns off when reference materials **exceed 50**. Press **Scan** button directly. Large avatars freeze on every selection without this limit.
+## My shader is not in the Combiner list
 
-## My shader isn't in Combiner's list
+There are three built-in profiles: NiloToon, Poiyomi, and lilToon. For any other shader, add a **shader profile JSON** yourself.
 
-Built-in profiles are NiloToon · Poiyomi · lilToon only. For other shaders, add via **shader profile JSON**. Fastest: export template with **Export Built-ins** then edit.
+→ [Combiner: shader profile](/tabs/combiner#셰이더-프로파일)
 
-→ [Combiner — Shader Profile](/tabs/combiner#셰이더-프로파일)
+## Still stuck?
 
-## Couldn't save in Paint and closed the window
-
-Next **Load** offers auto-saved canvas recovery — **Restore / Discard / Cancel**.
-
-Auto-save is at `<Project>/Library/MaskMakerAutoSave/`. `Library` is cache, so deleting it wipes auto-saves.
-
-→ [Settings and presets](/reference/settings-and-presets)
-
-## Applied Slot Split and want to undo
-
-Press `Ctrl+Z` to undo. Apply results support Undo/Redo.
-
-Cancel or failure mid-apply **rolls back entirely**. Never leaves partially applied state.
-
-## After Slot Split, new slot has same material as original
-
-Default behavior. Change to desired material manually after.
-
-Want separate material per slot (`_SplitN.mat`)? Turn on **Duplicate materials for new slots** before apply.
-
-## Still can't fix it
-
-Email studioraming@gmail.com. Include Unity version, render pipeline, shader name, and which tab did what — faster to help.
+Write to studioraming@gmail.com. Include the Unity version, the render pipeline, the shader name, and what you did, so we can help faster.

@@ -6,65 +6,55 @@ sidebar_position: 910
 
 # Known limitations
 
-**By the end of this page** you'll understand what Mask Maker does not do and the design boundaries it set. What's listed here is intentional, not bugs.
+**After reading this page, you will know** what Mask Maker does not do and which limits are part of the design. The items here are intended behavior, not bugs.
 
 ## Environment
 
-| Item | Scope |
+| Item | Range |
 |---|---|
-| Unity | 2019.4 LTS ~ 2022.3. Other versions unverified |
-| Render pipeline | Built-in RP · URP. **HDRP not supported** |
-| Runtime | Editor only. No runtime API |
-| Platform | Editor environment (developed & verified on Windows) |
+| Unity | 2019.4 to Unity 6 (6000.0, 6000.3 LTS) |
+| Render pipeline | Built-in RP · URP |
+| When it runs | Editor only. There is no runtime API |
+| Platform | The environment where the editor runs (developed and verified on Windows) |
+
+<!-- CONFIRM: The support range comes from the 2.0 manual. There is no runtime verification for 2019.4, and 6000.x has only a compile gate (DRAFT_NOTES F1, F2). The 0.1.1 sentence "not supported for HDRP" is not in the 2.0 manual, so it was left out (DRAFT_NOTES F3). -->
+
+## During Play
+
+- **During Play, loading, editing, and adding layers are turned off.** Changes made during Play are not kept.
+- You can continue working after Play ends.
+
+## Memory recovery
+
+- If a recovery file cannot be written, the emergency copy exists only in memory. It is lost when the Unity process ends or is force-quit.
+- If you choose **Quit without saving**, work that existed only in memory is lost.
 
 ## Shaders
 
-- Auto-assign and auto-optimize know **only NiloToon · Poiyomi 9.x · lilToon**. MingToon is in the reference table only; not in built-in scan profiles.
-- **Can still make and plug masks for other shaders.** Auto-scan and reassign don't work; add via [shader profile JSON](/tabs/combiner#셰이더-프로파일).
-- If Poiyomi material is in **Locked In** state, properties don't update. Unlock first.
+- Automatic connection goes by **the property names of the target shader**. On a shader whose names do not match, you must plug the mask in yourself.
 
-## Combiner
+## Expert tools (Combiner, slot split)
 
-- **Auto scan turns off when reference materials exceed 50.** Press **Scan** button directly. Prevents large avatars from freezing on every pick.
-- Already-packed textures · non-grayscale textures · textures referenced by multiple channels are **auto-excluded**. Can manually include if needed.
-- **Does not delete original mask files.** Clean up manually after checking results.
-- lilToon slot only samples R, so **only one per pack**.
-- Mixed resolution resizes to larger. **Mixed aspect ratio warns but proceeds** — check result visually.
+- When a material count goes over **50**, automatic rescanning turns off when the selection changes. Then you must press **Rescan** yourself.
+- Textures that look already packed, and textures that a material reads through its **A channel**, are **excluded automatically**. Each exclusion shows its reason.
+- **Original mask files are not deleted.** Check the result, then clean them up yourself.
+- The lilToon slot samples R only, so **only one** mask fits in a pack.
+- Slot split changes **only the submesh assignment**. It does not cut the mesh or split vertices.
+- Slot split overwrites **only the output Mask Maker made**. It does not overwrite external files, files without an ownership mark, or files whose source is different.
 
-## Slot Split
+## Painting
 
-- **Only Mask Maker output overwrites; preserves GUID.** Outside files · files with no owner mark · files with different source don't overwrite.
-- New slots get **same material as original slot** by default.
-- Split changes **submesh assignment only**. Does not actually cut mesh or split vertices.
+- Mirror painting makes sense only when **the model is symmetric left to right**. With an asymmetric UV, the other side does not line up.
+- For an unsupported material, export a PNG and plug it in yourself. The tool does not assign the texture automatically.
 
-## Paint
+## Gradient and bridge
 
-- Auto-save is at `<Project>/Library/MaskMakerAutoSave/`. **`Library` is cache** — deleting or moving project by copy wipes it. Not backup.
-- Mirror paint is **meaningful when model is left-right symmetric**. Nonsymmetric UV offsets the opposite.
-- Occlusion off means X-Ray paint through. Intended, but forgetting toggle paints back too.
-
-## MatCap Gloss
-
-- **Gloss mode** bakes from current Scene view angle. Changing angle changes result.
-- **AO (Cavity) mode** ignores Scene view angle but isn't real-time preview — use **Preview Bake** button to check.
-- Cannot edit handles if Preview is off.
-
-## Gradient
-
-- Output is **color texture (sRGB), not mask**. Don't plug straight into mask slots.
-- **Without [reference bone](/tabs/gradient#기준-본), position shifts when pose changes.**
-- **If no bone with same name exists** when applying preset to different avatar, reverts to world coordinates.
-
-## Bridge + Region Mask
-
-- Selection **clears on Load**. Mode switch or preview toggle doesn't clear.
-- Tint color is **preview-only**. Saved mask is always grayscale.
-- Manual pick mode output filename keeps **`_Isolation` suffix** (backward compat with old work).
-- Auto-assign targets **NiloToon stacking layer** slots.
+- If you set the gradient's **reference bone**, the start and end points follow that bone. If the bone is not found, the gradient is baked at world position.
+- The bridge **Tint (preview)** is for the preview only. The saved mask is always grayscale.
 
 ## Settings
 
-- Tab adjustment values stored in `EditorPrefs` **editor-globally**. Values from other projects carry over.
-- User shader profiles at `<Project>/MaskMakerProfiles/` follow project. `EditorPrefs` don't.
+- Adjustment values and settings on each tab are saved in `EditorPrefs` **globally for the editor**. A value changed in another project carries over.
+- User shader profiles are kept in `<Project>/MaskMakerProfiles/`, so they move with the project.
 
 → [Settings and presets](/reference/settings-and-presets)

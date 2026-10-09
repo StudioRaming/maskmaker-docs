@@ -11,9 +11,13 @@
     "message": "Concepts",
     "description": "The label for category '개념' in sidebar 'docsSidebar'"
   },
-  "sidebar.docsSidebar.category.탭": {
-    "message": "Tabs",
-    "description": "The label for category '탭' in sidebar 'docsSidebar'"
+  "sidebar.docsSidebar.category.마스크 만들기 방법": {
+    "message": "Ways to make a mask",
+    "description": "The label for category '마스크 만들기 방법' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.전문가 도구": {
+    "message": "Expert tools",
+    "description": "The label for category '전문가 도구' in sidebar 'docsSidebar'"
   },
   "sidebar.docsSidebar.category.셰이더 연결": {
     "message": "Wiring into shaders",
