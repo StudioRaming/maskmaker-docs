@@ -100,3 +100,14 @@ Still open:
 - Hangul in English and Japanese pages: only the language names (한국어 / English / 日本語) that the manual also uses.
 - Anchors: layer-stack (방법-조합, 레이어-저장, 마스크-출력, 되돌리기와-자동-보존), paint (칠하기-보정, 펜-필압), slot-split (합치기-모드), combiner (셰이더-프로파일) are explicit in ko, en and ja.
 - Em dashes: the carried-over 0.1.1 pages and the existing KO style still use them. New draft text was written with fewer.
+
+## 5. i18n pass 2026-10-10 (task MM-EME-PR-INTEG-RELEASE-20261009, decisions G3/D14)
+
+- UI names in ko/en/ja were checked against the product Lang tables (MaskMakerLang*.cs at 95849a1). Wrong names fixed
+  (for example ko 맷캡 광택, en Merge Masks / Split Channels / Combine + Reassign / Manual pick / Two-Sided, ja 現在の選択を使う / 適用結果 / マスクのみ / 統合＋再割り当て).
+- Decisions applied: D4 (package name MaskMaker_v2.0.0.unitypackage), D7 (free-update notice on the intro page, update section on the install page),
+  D11/D12 (Unity 2019.4 ~ Unity 6 (6000.0, 6000.3 LTS), BRP and URP; "support included"), D13 (latest MingToon), D15 (channels-and-packing#channel-change),
+  D19 (empty mask hint). Release line is "2.0.0" without a date (D2 left to 라밍).
+- D15 button names Move / Just follow (ko 옮기기 / 따라가기만, ja 移動する / 追従のみ) come from the manual in docs/mm-release-20261009 (0062ea9); the product strings were not final in the code yet.
+- Open: this file is committed in the draft; drop it before the release push if it should not ship. Remaining CONFIRM comments: 1.x source-(.cs)-install guidance, 2.0.0 "Fixed" list check, 1.x change check.
+- Not touched: the required-texture shader tables (P6 in progress).
