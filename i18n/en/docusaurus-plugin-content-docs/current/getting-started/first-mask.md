@@ -44,7 +44,7 @@ Choose one of **Mask only · Applied result · Original**.
 
 ## Edit several masks
 
-You can move between the masks on one material and paint on each. If you paint a shadow mask, edit an outline mask and come back, each mask keeps its drawing and layers. Packed masks that use the R/G/B/A channels keep separate work for each channel. If you change the channel in the Inspector, your work moves to the new channel with it. → [Channels and packing](/concepts/channels-and-packing#channel-change)
+You can move between the masks on one material and paint on each. If you paint a shadow mask, edit an outline mask and come back, each mask keeps its drawing and layers. Packed masks that use the R/G/B/A channels keep separate work for each channel. If you change the channel in the Inspector, your painted work moves to the new channel with it. If the new channel already has work, Mask Maker asks **Move** / **Just follow**. Nothing is deleted. → [Channels and packing](/concepts/channels-and-packing#channel-change)
 
 ## Output and plug into a shader
 
