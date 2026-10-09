@@ -28,7 +28,7 @@ Mask Maker's Editor scripts and internal resources reference each other. Importi
 | Folder | `Assets/StudioRaming/MaskMaker/Editor` exists |
 | Menu | **StudioRaming → Mask Maker** appears |
 | Console | No Mask Maker compile errors |
-| Window header | Language selector (한국어 / English / 日本語) and the **?** button at top right |
+| Window header | The **Docs** button and the language selector (한국어 / English / 日本語) at top right. The **?** button is at the end of the action bar |
 
 <!-- SCREENSHOT: Window header — language dropdown and ? button -->
 

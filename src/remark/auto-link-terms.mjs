@@ -23,7 +23,7 @@ const GLOSSARY = {
   'sRGB': '/concepts/srgb-and-import-settings',
 
   // 탭
-  'MatCap 광택': '/tabs/matcap-gloss',
+  '맷캡 광택': '/tabs/matcap-gloss',
   'AO(캐비티)': '/tabs/matcap-gloss',
   '그라데이션 탭': '/tabs/gradient',
   '기준 본': '/tabs/gradient',

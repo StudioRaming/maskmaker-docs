@@ -14,6 +14,7 @@ sidebar_position: 1
 |---|---|
 | `Ctrl+Z` / `Ctrl+Y` | Undo / redo. One step is one apply, one selection change, or one stroke |
 | `Space` (hold and drag) | Moves the UV canvas |
+| `Tab` | Turns editing on or off (not while typing in a field) |
 | `Esc` | Cancels the drag or stroke in progress |
 
 ## Paint in the Scene view
@@ -35,9 +36,11 @@ These keys work in the Scene view while a paint tool is on.
 | Action | Result |
 |---|---|
 | `1` / `2` / `3` / `4` | Selection unit: Vertex / Edge / Face / Island. Ignored while the brush is on |
-| `A` | Select all (while the brush is off) |
+| `A` / `Alt+A` | Select all / clear the selection (while the brush is off) |
 | `F` | Fits the canvas to the window |
 | `X` | While the brush is on, switches the brush value between 0 and 1 |
+| Click | Replaces the selection |
+| `Shift` + click | Adds to the selection |
 | `Ctrl` + click or drag | Toggles the selection or removes from it |
 
 ## Bridge (picking strands in the Scene view)

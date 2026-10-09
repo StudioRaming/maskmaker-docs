@@ -35,7 +35,7 @@ Preview auto-restarts after apply.
 | **+ Add Slot** | Create new slot and auto-set as target |
 | **×** | Delete slot and **merge into slot above** |
 
-A `[Structure Changed]` badge appears when structure changes.
+A `[structure changed]` badge appears when structure changes.
 
 ## Refresh
 
@@ -98,7 +98,7 @@ With **Duplicate materials for new slots** on, each new slot gets its own materi
 2. Select object → **Load**
 3. Pick **2 or more** slots to merge — slot card checkboxes (base map thumbnails visible) or `Ctrl` + click in scene view
 4. Choose **Keep Material**. The merged submesh will use this material; the rest **leave only the renderer** (material assets are not deleted). Default is the first-picked slot
-5. **Merge** — the confirm dialog shows a summary (`Slots N→M, Triangle count`)
+5. **Merge** — the confirm dialog shows a summary (`slots N→M, T triangles`)
 
 The selection count displays as `{picked} / {total} slots selected (need 2 or more)`.
 

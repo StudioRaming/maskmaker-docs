@@ -29,7 +29,7 @@ White is 1 and black is 0. The effect of each value depends on the shader featur
 | Show empty slots | On by default, so disabled effects and empty masks are easy to find |
 | Guided | Focuses on the selected mask's effect settings and Scene view work |
 | Expert | Detailed control over layers, mesh, output and tools |
-| Recent Work | Find saved files in the Project window or open their folders |
+| Recent | Find saved files in the Project window or open their folders |
 
 Switching modes keeps your work.
 

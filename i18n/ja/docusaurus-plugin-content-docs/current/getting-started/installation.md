@@ -28,7 +28,7 @@ Mask Maker の Editor スクリプトと内部のリソースは互いに参照�
 | フォルダー | `Assets/StudioRaming/MaskMaker/Editor` がある |
 | メニュー | **StudioRaming → Mask Maker** が表示される |
 | コンソール | Mask Maker に関するコンパイルエラーがない |
-| ウィンドウのヘッダー | 右上に言語選択（한국어 / English / 日本語）と **?** ボタンがある |
+| ウィンドウのヘッダー | 右上に **ガイド** ボタンと言語選択（한국어 / English / 日本語）がある。**?** ボタンは作業バーの末尾にある |
 
 <!-- SCREENSHOT: ウィンドウのヘッダー — 言語ドロップダウンと ? ボタン -->
 

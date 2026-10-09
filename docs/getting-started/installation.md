@@ -28,7 +28,7 @@ Mask Maker는 Editor 스크립트와 내부 리소스가 서로를 참조합니�
 | 폴더 | `Assets/StudioRaming/MaskMaker/Editor` 가 존재 |
 | 메뉴 | **StudioRaming → Mask Maker** 항목이 보임 |
 | 콘솔 | Mask Maker 관련 컴파일 오류 없음 |
-| 창 헤더 | 오른쪽 위에 **문서**(영어 UI는 Docs) 버튼과 언어 선택(한국어/English/日本語)이 보임. **?** 버튼은 작업줄 끝에 있음 |
+| 창 헤더 | 오른쪽 위에 **문서** 버튼과 언어 선택(한국어/English/日本語)이 보임. **?** 버튼은 작업줄 끝에 있음 |
 
 <!-- SCREENSHOT: 창 헤더 — 언어 드롭다운과 ? 버튼 -->
 
