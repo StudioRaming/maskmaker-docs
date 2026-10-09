@@ -71,10 +71,10 @@ Combiner's **Split Channels** turns a packed texture back into per-channel grays
 
 ## When you change the channel in the Inspector {#channel-change}
 
-If you change the channel a material writes in the Inspector (for example Metallic from R to B), your painted work moves to the new channel, and the window follows to that channel's mask and says so. If the new channel already has its own painted work, Mask Maker asks:
+If you change the channel a material writes in the Inspector (for example Metallic from R to B), your painted work moves to the new channel, and the window follows to that channel's mask and says so. If the new channel already has its own painted work, Mask Maker asks "Move the work to the new channel?":
 
-- **Move**: moves the work to the new channel. The new channel's own work is kept and can be restored.
-- **Just follow**: shows the new channel's own work. The old work stays on the old channel.
+- **Move**: moves the work to the new channel. The new channel's own work is not deleted: it is kept in the old channel's draft and shows again when you choose the old channel.
+- **Just follow**: the work stays on the old channel, and the window shows the new channel's own work.
 
 If the new channel is empty, the work moves without asking. `Ctrl+Z` undoes it.
 
