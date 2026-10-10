@@ -59,8 +59,7 @@ Pick 한국어 / English / 日本語 from the dropdown at the top right of the w
 
 Importing over the existing folder replaces each file in place. You do not need to delete the old files first.
 
-**Editable documents:** A 1.x layer document is converted to the new format the first time you save (overwrite) it in 2.0. The original is backed up to `Library/StudioRaming/MaskMaker/DocumentBackups/` before conversion. A converted document cannot be opened in 1.x.
-<!-- CONFIRM: Users who installed Mask Maker as source files (for example, a copy bundled with an older MingToon package) are still under investigation. Add guidance for that case only after it is settled. -->
+**Editable documents:** 2.0 saves layer documents in a new format. A document in an older format is backed up to `Library/StudioRaming/MaskMaker/DocumentBackups/` the first time you save (overwrite) it. A document saved in the 2.0 format cannot be opened in 1.x.
 
 ## Where data is stored
 

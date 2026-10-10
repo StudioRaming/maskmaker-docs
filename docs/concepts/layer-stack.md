@@ -58,7 +58,7 @@ sidebar_position: 4
 
 기존 PNG나 문서를 다시 열어 같은 마스크를 계속 편집할 수 있습니다. 파일을 덮어쓸 때는 선택한 저장 경로를 확인하세요.
 
-1.x 레이어 편집 문서는 2.0에서 처음 저장할 때 새 형식으로 변환됩니다. 변환 전 원본은 `Library/StudioRaming/MaskMaker/DocumentBackups/`에 백업되며, 변환된 문서는 1.x에서 열 수 없습니다.
+2.0은 레이어 편집 문서를 새 형식으로 저장합니다. 이전 형식의 문서는 처음 저장할 때 원본이 `Library/StudioRaming/MaskMaker/DocumentBackups/`에 백업되며, 2.0 형식의 문서는 1.x에서 열 수 없습니다.
 
 ## 이전 버전의 레이어 데이터
 

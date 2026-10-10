@@ -58,7 +58,7 @@ A drawing that is not connected to a layer is restored as a standalone canvas, w
 
 You can reopen an existing PNG or document and keep editing the same mask. When you overwrite a file, check the save path you selected.
 
-A 1.x layer document is converted to the new format the first time you save it in 2.0. The original is backed up under `Library/StudioRaming/MaskMaker/DocumentBackups/`, and a converted document cannot be opened in 1.x.
+2.0 saves layer documents in a new format. A document in an older format is backed up under `Library/StudioRaming/MaskMaker/DocumentBackups/` the first time you save it, and a document saved in the 2.0 format cannot be opened in 1.x.
 
 ## Data from earlier versions
 
