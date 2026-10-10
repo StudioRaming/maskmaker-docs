@@ -57,7 +57,7 @@ Pick 한국어 / English / 日本語 from the dropdown at the top right of the w
 
 **Buyers of 1.x update to 2.0 for free.** Masks you saved in 1.x keep working, and your files and settings from 1.x stay as they are.
 
-Importing over the existing folder replaces each file in place. You do not need to delete the old files first.
+Importing over the existing folder replaces each file in place. You do not need to delete the old files first. The exception is a project where you installed Mask Maker as the source (`.cs`) edition: delete the source edition first. Keeping it next to the DLL edition defines the same class twice and causes compile errors.
 
 **Editable documents:** 2.0 saves layer documents in a new format. A document in an older format is backed up to `Library/StudioRaming/MaskMaker/DocumentBackups/` the first time you save (overwrite) it. A document saved in the 2.0 format cannot be opened in 1.x.
 
